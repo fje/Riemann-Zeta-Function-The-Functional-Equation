@@ -134,31 +134,57 @@ In this section we introduce infinite products and talk about their convergence.
 
 
 \begin{lemma}
-	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. We have
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. Following statements are equivalent
 \begin{equation*}
-	\prod_{n \in \field{N}} \cbr{1 + a_n} \textit{ converges} \iff \sum_{n \in \field{N}} \log(1 + a_n) \textit{ converges}.
+\begin{aligned}
+	&(i) &&\prod_{n \in \field{N}} \cbr{1 + a_n} \textit{ converges} \\
+	&(ii) &&\sum_{n \in \field{N}} \log(1 + a_n) \textit{ converges}.
+\end{aligned}
 \end{equation*}
 \end{lemma}
-\begin{proof} Let the infinite product be denoted by P and its partial products by $P_n$. If $P_n$ converges then
+\begin{proof} Let the infinite product be denoted by P, its partial products by $P_n$ and respectively the series by $S$ and its partial sums by $S_n$. If $P_n$ converges then
 \begin{equation*}
 	\lim\limits_{n \to \infty} \frac{P_n}{P_{n - 1}} = \lim\limits_{n \to \infty} 1 + a_n = 1.
 \end{equation*}
-	Hence $(a_n)_{n \in \field{N}}$ has to be a null sequence and
+	Hence $(a_n)_{n \in \field{N}}$ has to be a null sequence. To proof $(i) \implies (ii)$ we assume that $P_n \to P$ and we choose the principal value of $\log(P)$, namely
 \begin{equation*}
-	\exists N \in \field{N} \; \forall n > N \colon \abs{a_n} < 1
+	\log(P) = \log(\abs{P}) + i \arg(P).
 \end{equation*}
-	which gives us
+	Now we determine $\arg(P_n)$ by the condition
 \begin{equation*}	
-	\prod_{n \in \field{N}} \cbr{1 + a_n} = Q_N e^{\sum_{n > N} \log(1 + a_n)}
+	\arg(P) - \pi < \arg(P_n) \leq \arg(P) + \pi
 \end{equation*}
-	for the principal branch of $\log(z)$ where $Q_N \in \field{C} \mysetminus \fbr{0}$. We observe that the infinite product converges or notably can't vanish if and only if the series converges.
+	and set $\log(P_n) = \log(\abs{P_n}) + i \arg(P_n)$. Since $\log$ is a multivalued function we get $S_n = \log(P_n) + h_n 2 \pi i$ for $h_n \in \field(Z)$. For two consecutive terms we can write
+\begin{equation*}
+	(h_{n + 1} - h_n) 2 \pi i = \log(1 + a_{n + 1}) + \log(P_n) - \log(P_{n + 1}).
+\end{equation*}
+	If we choose $n$ large enough we get
+\begin{equation*}
+\begin{aligned}
+	\abs{\arg(1 + a_{n + 1})} &< \frac{2 \pi}{3} \\
+	\abs{\arg(P) - \arg(P_n)} &< \frac{2 \pi}{3} \\
+	\abs{\arg(P) - \arg(P_{n + 1})} &< \frac{2 \pi}{3}.
+\end{aligned}
+\end{equation*}
+	These inequalities imply
+\begin{equation*}
+	\abs{h_{n + 1} - h_n} < 1,
+\end{equation*}
+	hence for a sufficiently large $n$ we have $h_n = h_n + 1 = h$ and we can write
+\begin{equation*}
+	S = \log(P) + h 2 \pi i.
+\end{equation*}
+	To show $(ii) \implies (i)$ we assume that $S_n \to S$ and by writing $P_n = e^{S_n}$ for the principal branch of $\log$ we conclude that $P = e^{S} \in \field{C} \mysetminus {0}$.
 \end{proof}
 
 
 \begin{lemma}
-	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. We find
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. Following statements are equivalent
 \begin{equation*}
-	\prod_{n \in \field{N}} \cbr{1 + \abs{a_n}} \textit{ converges} \iff \sum_{n \in \field{N}} \abs{a_n} \textit{ converges}.
+\begin{aligned}
+	&(i) &&\prod_{n \in \field{N}} \cbr{1 + \abs{a_n}} \textit{ converges} \\
+	&(ii) &&\sum_{n \in \field{N}} \abs{a_n} \textit{ converges}.
+\end{aligned}
 \end{equation*}
 \end{lemma}
 \begin{proof}
