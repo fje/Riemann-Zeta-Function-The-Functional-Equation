@@ -1,0 +1,265 @@
+The Riemann zeta function is one of the most important functions in analytic number theory, particularly since it encodes a lot of information about prime numbers. Thus it is well worth taking a closer look at its properties and behaviour in the complex plane. Special attention should be paid to the zeros of the function as they might give some indication of the mysterious distribution of primes. \\
+Henceforth let $s \in \field{C}$ be a complex number where $\sigma \coloneqq \Re(s)$ and $t \coloneqq \Im(s)$. The space of all holomorphic functions on a domain $S \subseteq \field{C}$ shall be denoted by $\mathcal{H}(S) \coloneqq \fbr{f \in \field{C} ^S \colon f \textit{ holomorphic}}$.
+
+
+\section{Elementary Properties of $\zeta$}
+First of all we want to draw some conclusions about the convergence of the Riemann zeta function and its holomorphy in the right half-plane.
+
+
+\begin{definition}
+	We refer to
+\begin{equation*}
+\begin{aligned}	
+	&\zeta \colon \fbr{s \in \field{C} \colon \sigma > 1} \to \field{C}, \\
+	&\zeta(s) = \sum_{n = 1}^{\infty} n^{-s}
+\end{aligned}
+\end{equation*}
+	as the Riemann zeta function.
+\end{definition}
+
+
+\subsection{Absolute Convergence and Holomorphy}
+
+
+\begin{theorem}
+	$\zeta(s)$ converges absolutely for $\sigma > 1$.
+\end{theorem}
+\begin{proof}
+	Let $x \in \field{R}_{>0}$. We quickly note that
+\begin{equation*}
+	\abs{x^s}
+	= \abs{e^{s \log(x)}}
+	= \abs{e^{(\sigma + i t) \log(x)}}
+	= \abs{x^{\sigma} e^{i t \log(x)}}
+	= x^{\sigma}
+\end{equation*}
+	as
+\begin{equation*}
+	\forall \theta \in \field{R} \colon \abs{e^{i \theta}} = 1.
+\end{equation*}
+	Hence we obtain
+\begin{equation*}
+	\abs{\zeta(s)} = \abs{\sum_{n = 1}^{\infty} n^{-s}} \leq \sum_{n = 1}^{\infty} \abs{n^{-s}} = \sum_{n = 1}^{\infty} n^{-\sigma}.
+\end{equation*}
+	We know that the right sum converges for $\sigma > 1$. Consequently $\zeta(s)$ converges absolutely.
+\end{proof}
+
+
+\begin{lemma}[Weierstrass's uniform convergence theorem]
+	Let $S \subseteq \field{C}$ be open, $f \in \field{C}^S$ and $(f_n)_{n \in \field{N}} \in \mathcal{H}(S)^{\field{N}}$ with $\lim\limits_{n \to \infty} f_n = f$. If
+\begin{equation*}
+	\forall D \subset S \textit{ compact}: f_n\big\vert _D \to f\big\vert _D \textit{ uniformly},
+\end{equation*}
+	then
+\begin{equation}
+	f \in \mathcal{H}(S)
+\end{equation}
+	and
+\begin{equation}
+	f_n^{(k)}\big\vert _D \to f^{(k)}\big\vert _D \textit{ uniformly for } k \in \field{N}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+	Let $\triangle \subset S$ denote a closed solid triangle. As $\triangle$ is compact and due to the uniform convergence of $f_n\big\vert _\triangle \to f\big\vert _\triangle$ and Goursat’s lemma we know that
+\begin{equation*}
+	\forall \triangle \subset S \colon \int_{\partial \triangle} f(z) dz = \int_{\partial \triangle} \lim\limits_{n \to \infty} f_n(z) dz	= \lim\limits_{n \to \infty}\int_{\partial \triangle} f_n(z) dz = 0.
+\end{equation*}
+	 Morera's theorem finally gives us
+\begin{equation*}
+	f \in \mathcal{H}(S).
+\end{equation*}
+	To show the second claim, let $r \in \field{R}_{> 0}$ be the radius of an arbitrary closed disk $D_r \subset S$ and let the positively orientated boundary of $D_r$ be denoted by $\partial D_r$. Since $f_n^{(k)} \in \mathcal{H}(S)$ we can apply Cauchy's integral formula
+\begin{equation*}
+\begin{aligned}
+	f^{(k)}(z)
+	&= \frac{k!}{2 \pi i} \int _{\partial D_r} \frac{f(\xi)}{\cbr{\xi - z}^{k + 1}} d\xi \\
+	&= \frac{k!}{2 \pi i} \int _{\partial D_r} \lim\limits_{n \to \infty} \frac{f_n(\xi)}{\cbr{\xi - z}^{k + 1}} d\xi \\
+	&= \lim\limits_{n \to \infty} \frac{k!}{2 \pi i} \int _{\partial D_r} \frac{f_n(\xi)}{\cbr{\xi - z}^{k + 1}} d\xi
+	= \lim\limits_{n \to \infty} f_n^{(k)}(z)
+\end{aligned}
+\end{equation*}
+	for $z \in D_r^\circ$. For $l < r$ we obtain
+\begin{equation*}
+\begin{aligned}
+	\norm{f_n^{(k)} - f^{(k)}}_{D_l}
+	&\leq \sup\limits_{z \in D_l} \fbr{\frac{k!}{2 \pi} \int _{\partial D_r}\abs{\frac{f_n(\xi) - f(\xi)}{\cbr{\xi - z}^{k + 1}}} d\xi} \\
+	&\leq \sup\limits_{z \in D_l} \fbr{\frac{k! r}{\dist(z, \partial D_r)^{k + 1}} \norm{f_n - f}_{\partial D_r}} \\
+	&\leq \frac{k! r}{(r - l)^{k + 1}} \norm{f_n - f}_{\partial D_r}.
+\end{aligned}
+\end{equation*}
+	Hence $f_n^{(k)}\big\vert _{D_l} \to f^{(k)}\big\vert _{D_l}$ uniformly. Since we can always find a finite cover of open disks $D^i$ for any compact set $D \subset S$ such that $\bigcup \overline{D^i} \subset S$, we have provided conclusive evidence for our claim.
+\end{proof}
+
+
+\begin{theorem}
+	$\zeta$ is holomorphic for $\sigma > 1$.
+\end{theorem}
+\begin{proof}
+	Let $R = \bbr{a, b} \times i\bbr{c, d} \subset \field{C}$ with $1 < \delta \leq a$. By the definition of uniform convergence we write
+\begin{equation*}
+\begin{aligned}
+	&\forall \eps > 0 \; \exists N \in \field{N} \; \forall m \geq N \; \forall s \in R \colon \\
+	&\begin{aligned}
+	\abs{\sum _{n = 1} ^\infty n^{-s} - \sum _{n = 1} ^{m - 1} n^{-s}}
+	= \abs{\sum _{n = m} ^\infty n^{-s}}
+	&\leq \sum _{n = m} ^\infty \abs{n^{-s}}
+	= \sum _{n = m} ^\infty n^{-\sigma} \\
+	&\leq \sum _{n = m} ^\infty n^{-\delta} < \eps.
+	\end{aligned}
+\end{aligned}
+\end{equation*}
+	Therefore $\zeta_m \big\vert _R \to \zeta \big\vert _R$ uniformly and according to Weierstrass $\zeta$ is holomporphic for $\sigma > 1$.
+\end{proof}
+
+
+\section{The Euler Product}
+In this section we introduce infinite products and talk about their convergence. After deriving $\zeta$'s Euler product representation we can make some assertions about the occurrence of zeros for $\sigma > 1$.
+
+
+\subsection{Infinite Convergent Products}
+
+
+\begin{definition}
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. If
+\begin{equation*}
+	\prod_{n \in \field{N}} \cbr{1 + a_n} \in \field{C} \mysetminus \fbr{0}
+\end{equation*}
+	the infinite product is said to be convergent. We speak of absolute convergence if the same holds true for $\abs{a_n}$.
+\end{definition}
+
+
+\begin{remark}
+	We particularly don't allow convergent products to be zero here, since any infinite product being zero would converge if only one factor was zero, hence the convergence wouldn't depend on the whole sequence of factors. Furthermore this convention would be too radical for certain applications.
+\end{remark}
+
+
+\begin{lemma}
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. We have
+\begin{equation*}
+	\prod_{n \in \field{N}} \cbr{1 + a_n} \textit{ converges} \iff \sum_{n \in \field{N}} \log(1 + a_n) \textit{ converges}.
+\end{equation*}
+\end{lemma}
+\begin{proof} Let the infinite product be denoted by P and its partial products by $P_n$. If $P_n$ converges then
+\begin{equation*}
+	\lim\limits_{n \to \infty} \frac{P_n}{P_{n - 1}} = \lim\limits_{n \to \infty} 1 + a_n = 1.
+\end{equation*}
+	Hence $(a_n)_{n \in \field{N}}$ has to be a null sequence and
+\begin{equation*}
+	\exists N \in \field{N} \; \forall n > N \colon \abs{a_n} < 1
+\end{equation*}
+	which gives us
+\begin{equation*}	
+	\prod_{n \in \field{N}} \cbr{1 + a_n} = Q_N e^{\sum_{n > N} \log(1 + a_n)}
+\end{equation*}
+	for the principal branch of $\log(z)$ where $Q_N \in \field{C} \mysetminus \fbr{0}$. We observe that the infinite product converges or notably can't vanish if and only if the series converges.
+\end{proof}
+
+
+\begin{lemma}
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. We find
+\begin{equation*}
+	\prod_{n \in \field{N}} \cbr{1 + \abs{a_n}} \textit{ converges} \iff \sum_{n \in \field{N}} \abs{a_n} \textit{ converges}.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+	We can write
+\begin{equation*}
+	0 < 1 + \sum_{n \in \field{N}} \abs{a_n} \leq \prod_{n \in \field{N}} \cbr{1 + \abs{a_n}} = e^{\sum_{n \in \field{N}} \log(1 + \abs{a_n})} \leq e^{\sum_{n \in \field{N}} \abs{a_n}}
+\end{equation*}
+	as
+\begin{equation*}
+	\forall x \in \field{R}_{\geq 0} \colon \log(1 + x) \leq x.
+\end{equation*}
+\end{proof}
+
+
+\begin{definition}
+	An arithmetic function $f \in \field{C}^\field{N}$ satisfying
+\begin{equation*}
+	\forall n,m \in \field{N} \colon \gcd\cbr{n, m} = 1 \implies f(n m) = f(n) f(m)
+\end{equation*}
+	is called multiplicative. If even
+\begin{equation*}
+	\forall n,m \in \field{N} \colon f(n m) = f(n) f(m)
+\end{equation*}
+	holds true we say $f$ is completely multiplicative.
+\end{definition}
+
+
+\subsection{Euler Product Representation of $\zeta$}
+
+
+\begin{theorem}
+	Let $\mathcal{P} = \fbr{p \in \field{N} \colon \; p \textit{ prime number}}$ and let $f \in \field{C}^\field{N}$ be an arithmetic function. If $\sum_{n \in \field{N}} f(n)$ converges absolutely and if $f$ is multiplicative, the series can be expressed by an absolutely convergent infinite product
+\begin{equation*}
+	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)}.
+\end{equation*}
+	If $f$ even is completely multiplicative we have
+\begin{equation*}
+	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \frac{1}{1 - f(p)}.
+\end{equation*}
+\end{theorem}
+\begin{proof}
+	Take the product
+\begin{equation*}
+	Q(x) = \prod_{p \in \mathcal{P}_{\leq x}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)}.
+\end{equation*}
+	Since the product is finite and our series converge absolutely we can expand the product and rearrange its terms without altering the sum. For an arbitrary multiplication of two factors involving primes $p_k$ and $p_l$ we get
+\begin{equation*}
+\begin{aligned}		
+	\cbr{1 + \sum_{i = 1}^\infty f(p_k^i)} \cbr{1 + \sum_{j = 1}^\infty f(p_l^j)} \\
+	= 1 + \sum_{i = 1}^\infty f(p_k^i) + \sum_{j = 1}^\infty \cbr{f(p_l^j) + \sum_{i = 1}^\infty f(p_k^i) f(p_l^j)}
+\end{aligned}
+\end{equation*}
+	and because $f$ is multiplicative, we observe that after calculating the whole product we end up with summands of the form
+\begin{equation*}
+	f(p_{i_1}^{\alpha_1})f(p_{i_2}^{\alpha_2}) \dots f(p_{i_r}^{\alpha_r}) = f(p_{i_1}^{\alpha_1} p_{i_2}^{\alpha_2} \dots p_{i_r}^{\alpha_r}),
+\end{equation*}
+	where $p_{i_1}^{\alpha_1} p_{i_2}^{\alpha_2} \dots p_{i_r}^{\alpha_r}$ occurs only once within the whole sum as the above representation is unique due to the unique factorisation theorem. This allows us to write
+\begin{equation*}
+	Q(x) = \sum_{n \in A} f(n),
+\end{equation*}
+	where $A$ consists of those $n$ having all their prime factors $\leq x$, hence
+\begin{equation*}
+	\sum_{n \in \field{N}} f(n)	 - Q(x) = \sum_{n \in B} f(n),
+\end{equation*}
+	where B is the set of $n$ having at least one prime factor $> x$. Thus
+\begin{equation*}
+	\abs{\sum_{n \in \field{N}} f(n) - Q(x)} \leq \sum_{n \in B} \abs{f(n)} \leq \sum_{n > x} \abs{f(n)}
+\end{equation*}
+	converges to $0$ as $x \to \infty$ implying
+\begin{equation*}	
+	\lim\limits_{x \to \infty} Q(x) = \sum_{n \in \field{N}} f(n).
+\end{equation*}
+	To show the absolute convergence of $Q(\infty)$ we recall that the infinite product $\prod_{n \in \field{N}} \cbr{1 + a_n}$ converges absolutely if and only if $\sum_{n \in \field{N}} \abs{a_n} < \infty$. We write
+\begin{equation*}
+	\forall x \in \field{N} \colon \; \sum_{p \in \mathcal{P}_{\leq x}} \abs{\sum_{i = 1}^\infty f(p^i)} \leq \sum_{p \in \mathcal{P}_{\leq x}} \sum_{i = 1}^\infty \abs{f(p^i)} \leq \sum_{n = 2}^\infty \abs{f(n)} < \infty
+\end{equation*}
+	which implies
+\begin{equation*}
+	\sum_{p \in \mathcal{P}} \abs{\sum_{i = 1}^\infty f(p^i)} < \infty.
+\end{equation*}
+	Therefore $Q(\infty)$ is absolutely convergent. If $f$ is completely multiplicative the infinite product simplifies to
+\begin{equation*}
+	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)} = \prod_{p \in \mathcal{P}} \cbr{\sum_{i = 0}^\infty f(p)^i} = \prod_{p \in \mathcal{P}} \frac{1}{1 - f(p)}.
+\end{equation*}
+\end{proof}
+
+
+\begin{corollary}
+	We have $\zeta$'s Euler product representation
+\begin{equation*}
+	\zeta(s) = \prod_{p \in \mathcal{P}} \frac{1}{1 - p^{-s}} \hsp \textit{ for } \sigma > 1.
+\end{equation*}
+\end{corollary}
+\begin{proof}
+	Since $f(n) = n^{-s}$ is a completely multiplicative arithmetic function and the series converges absolutely the above statement follows directly from previous theorem.
+\end{proof}
+
+
+\begin{corollary}
+	$\zeta(s)$ has no zeros for $\sigma > 1$.
+\end{corollary}
+\begin{proof}	
+	According to the last theorem we know that the infinite product representation of $\zeta(s)$ for $\sigma > 1$ is absolutely convergent, which implies that $\zeta(s)$ can't vanish for $\sigma > 1$. 
+\end{proof}

@@ -1,0 +1,69 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsthm,mathtools}
+\usepackage{hyperref,graphics}
+\usepackage{bigints}
+\usepackage{todonotes}
+\usepackage{natbib}
+
+\usetikzlibrary{decorations.markings}
+\graphicspath{{images/}}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\hsp}{\hspace{0.3cm}}
+
+\delimitershortfall-1sp
+\newcommand{\field}[1]{\mathbb{#1}}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\cbr}[1]{\left(#1\right)}
+\newcommand{\bbr}[1]{\left[#1\right]}
+\newcommand{\cbbr}[1]{\left(#1\right]}
+\newcommand{\bcbr}[1]{\left[#1\right)}
+\newcommand{\fbr}[1]{\left\{#1\right\}}
+
+\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.6pt,line cap=round] (3pt,0) -- (0,6pt);}}}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.45pt,line cap=round] (2pt,0) -- (0,4pt);}}}
+\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
+
+\DeclareMathOperator{\dist}{\text{dist}}
+
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\title{
+	{Riemann Zeta Function - The Functional Equation}\\
+	{\large University of Vienna}\\
+	{\vspace{3ex}\includegraphics[width=15ex]{University.png}}
+}
+\author{Florian Jesacher}
+\date{April 1, 2016}
+\maketitle
+
+\begin{abstract}
+We first introduce the Riemann zeta function in the right half-plane and use Weierstrass's uniform convergence theorem to address the holomorphy of the function. By deriving its Euler product representation we deduce the absence of roots on the function's domain. Once we have defined the gamma function and examined some of its identities including Euler's reflection formula, we create a link to the Riemann zeta function. We manage to meromorphically continue said function and extend it to the whole complex plane by utilising the analytic character of contour integrals. This leads us directly to a meromorphic integral expression with only one simple pole finally paving the way to the functional equation. One fundamental result of this new expression is that the Riemann zeta function has no nontrivial zeros outside the critical strip.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+\input{chapters/Introduction}
+
+\chapter{Meromorphic Continuation}
+\input{chapters/MeromorphicContinuation}
+
+\appendix
+\bibliographystyle{Style}
+\bibliography{References}
+\nocite{*}
+
+\end{document}

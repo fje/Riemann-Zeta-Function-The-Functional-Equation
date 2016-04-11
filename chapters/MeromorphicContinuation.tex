@@ -1,0 +1,640 @@
+Analytic continuation provides a way to extend the domain of a given analytic complex function. We can expand this function into a power series which is only valid within its radius of convergence. Under certain circumstances these expansions have a larger-than-expected radius of convergence and its power series can be used to define the function outside of its domain. If said function has at most countable many poles we speak of meromorphic continuation. We won't explicitly use power series  for our meromorphic continuation of the Riemann zeta function but a ruse where contour integrals are involved.
+
+
+\section{The Gamma Function}
+The gamma function is closely related to the Riemann zeta function and plays an important role in $\zeta$'s meromorphic continuation beyond the $\sigma = 1$ line. Thus we want to acquire some of its properties including Euler's reflection formula, which helps us to make assertions about zero-free regions of the Riemann zeta function.
+
+
+\begin{definition}
+	The function
+\begin{equation*}
+\begin{aligned}
+	&\Gamma \colon \fbr{s \in \field{C} \colon \sigma > 0} \to \field{C}, \\
+	&\Gamma(s) = \int _0 ^\infty x^{s - 1} e^{-x} dx
+\end{aligned}
+\end{equation*}
+	is called gamma function.
+\end{definition}
+
+
+\subsection{Convergence and Holomorphy}
+
+
+\begin{theorem}
+	$\Gamma(s)$ is well defined for $\sigma > 0$
+\end{theorem}
+\begin{proof}
+	We can write
+\begin{equation*}
+\begin{aligned}
+	\abs{\Gamma(s)}
+	&= \abs{\int _0 ^\infty x^{s - 1} e^{-x} dx} \leq \int _0 ^\infty \abs{x^{s - 1} e^{-x}} \\
+	&= \int _0 ^1 x^{\sigma - 1} e^{-x} dx + \int _1 ^k x^{\sigma - 1} e^{-x} dx + \int _k ^\infty x^{\sigma - 1} e^{-x} dx
+\end{aligned}
+\end{equation*}
+	for $k \in \cbr{1, \infty}$. For the first integral we find
+\begin{equation*}
+	\int _0 ^1 x^{\sigma - 1} e^{-x} dx \leq \int _0 ^1 x^{\sigma - 1} dx = \frac{1}{\sigma}
+\end{equation*}
+	since $e^{-x} \leq 1$ for $x > 0$. As the second integral clearly exists for every $k$, we proceed to the third integral. Note that
+\begin{equation*}
+	\forall r \in \field{R} \colon \lim\limits_{x \to \infty} x^r e^{-\frac{x}{2}} = 0
+\end{equation*}
+ 	hence
+\begin{equation*}
+	\exists k \in \cbr{0, \infty} \; \forall x > 0 \geq k \colon \; x^r e^{-\frac{x}{2}} \leq 1.
+\end{equation*}
+	Thus we have
+\begin{equation*}
+	\int _k ^\infty x^{\sigma - 1} e^{-x} dx = \int _k ^\infty \cbr{x^{\sigma - 1} e^{-\frac{x}{2}}} e^{-\frac{x}{2}} dx \leq \int _k ^\infty e^{-\frac{x}{2}} dx = 2 e^{-\frac{k}{2}}.
+\end{equation*}
+\end{proof}
+
+
+\begin{theorem}
+	$\Gamma(s)$ is holomorphic for $\sigma > 0$.
+\end{theorem}
+\begin{proof}
+	Let $R = \bbr{a, b} \times i\bbr{c, d} \subset \field{C}$ with $0 < \delta \leq a$. From the previous theorem we deduce
+\begin{equation*}
+\begin{aligned}
+	&\forall \eps > 0 \; \exists k \in \field{N} \; \forall m \geq k \; \forall s \in R \colon \\
+	&\abs{\int _0 ^\infty x^{s - 1} e^{-x} dx - \int _0 ^m x^{s - 1} e^{-x} dx} \leq \abs{\int _m ^\infty x^{s - 1} e^{-x} dx} \leq 2 e^{-\frac{m}{2}} < \eps,
+\end{aligned}
+\end{equation*}
+	hence $\Gamma_m \big\vert _R \to \Gamma \big\vert _R$ uniformly and according to Weierstrass $\Gamma$ is holomorphic for $\sigma > 0$.
+\end{proof}
+
+
+\begin{theorem}
+	We have the identity
+\begin{equation*}
+	\Gamma(s + 1) = s \Gamma(s).
+\end{equation*}
+\end{theorem}
+\begin{proof}
+	By applying integration by parts we get
+\begin{equation*}
+	\Gamma(s + 1) = \int _0 ^\infty x^{s} e^{-x} dx =\bbr{-x^s e^{-x}} _0 ^\infty + s \int _0 ^\infty x^{s - 1} e^{-x} dx = s\Gamma(s).
+\end{equation*}
+\end{proof}
+
+
+\subsection{Meromorphic Continuation}
+
+
+\begin{theorem}
+	$\Gamma(s)$ is meromorphically continuable for all $s \in \field{C}$ with simple poles at $s = -n\in \field{Z} _{\leq 0}$ and we have
+\begin{equation*}
+	Res\cbr{\Gamma(s), -n} = \frac{\cbr{-1}^n}{n!}.
+\end{equation*}
+\end{theorem}
+\begin{proof}
+	For fixed $s \in \field{C} \mysetminus \field{Z}_{\leq 0}$ let $n \in \field{N}_0$ be such that $\sigma + n > 0$. Then we have
+\begin{equation*}
+	\Gamma(s) = \frac{1}{s} \Gamma(s + 1) = \dots = \frac{1}{s \cbr{s + 1} \dots \cbr{s + n - 1}} \Gamma(s + n) = \frac{\Gamma(s + n)}{P_n(s)}.
+\end{equation*}
+	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $\lim\limits_{n \to \infty} P_n(s)$, namely $\ker\cbr{P_\infty(s)} = \field{Z}_{\leq 0}$. \\
+	Now we want to calculate the residues of $\Gamma(s)$ and find
+\begin{equation*}
+	Res\cbr{\Gamma(s), -n} = \lim\limits_{s \to -n} \cbr{s + n} \frac{\Gamma(s + n + 1)}{s \cbr{s + 1} \dots \cbr{s + n}} = \frac{\cbr{-1}^n}{n!}
+\end{equation*}
+\end{proof}
+
+
+\begin{lemma}
+	In particular we have
+\begin{equation*}
+	\Gamma(n + 1) = n! \textit{ for } n \in \field{N}_0.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+	We easily check that
+\begin{equation*}
+	\Gamma(n + 1) = n \Gamma(n) = \dots = n! \Gamma(1) = n!.
+\end{equation*}
+\end{proof}
+
+
+\subsection{Euler's Reflection Formula}
+
+
+\begin{lemma}
+	It holds that
+\begin{equation*}
+	\forall \sigma \in \field{R} \colon \lim\limits_{\abs{t} \to \infty} \Gamma(\sigma + i t) = 0,
+\end{equation*}
+	so $\Gamma(\sigma + i t)$ is bounded for a fixed $\sigma \in \field{R}$ and $\abs{t}$ large enough.
+\end{lemma}
+\begin{proof}
+	Let $\sigma >0$ be fixed. For the substitution $y = \frac{1}{2 \pi} \log(x)$ we get
+\begin{equation*}
+\begin{aligned}	
+	\Gamma(\sigma + i t)
+	&= \int_0^\infty x^{\sigma + i t - 1} e^{-x} dx \\
+	&= \int_{-\infty}^\infty e^{2 \pi i y t} e^{2 \pi y (\sigma - 1)} e^{-e^{2 \pi y}} dy = \int_{-\infty}^\infty e^{2 \pi i y t} \hat{g}(y) dy.
+\end{aligned}
+\end{equation*}
+	Per definition of the Fourier transform, the above formula says that the function
+\begin{equation*}
+\begin{aligned}
+	&g\colon \field{R} \to \field{C}, \\
+	&g(t) = \Gamma(\sigma + i t)
+\end{aligned}
+\end{equation*}
+	is the inverse Fourier transform of $\hat{g}$. Since the (inverse) Fourier transform describes an isomorphism on the Schwartz space $\mathcal{S}$, we deduce that $g$ has to decrease more rapidly for an increasing $\abs{t}$ than any polynomial and therefore $g \in \mathcal{S}(\field{R})$. In other words it in fact follows that
+\begin{equation*}
+	\lim\limits_{\abs{t} \to \infty} g(t) = \lim\limits_{\abs{t} \to \infty} \Gamma(\sigma + i t) = 0.
+\end{equation*}
+	By meromorphic continuation of $\Gamma$ this holds for all $\sigma \in \field{R}$.
+\end{proof}
+
+
+\begin{theorem}[Euler's reflection formula]
+	We have
+\begin{equation*}
+	\Gamma(s)\Gamma(1 - s) = \frac{\pi}{\sin(\pi s)} \hsp \textit{  for } s \in \field{C} \mysetminus \field{Z}.
+\end{equation*}
+	Hence $\Gamma(s)$ has no zeros and its reciprocal function $\frac{1}{\Gamma(s)}$ is well defined with zeros at the simple poles of $\Gamma(s)$.
+\end{theorem}
+\begin{proof}
+	Let us consider
+\begin{equation*}
+	f(s) = \sin(\pi s) \Gamma(s) \Gamma(1 - s).
+\end{equation*}
+	We want to show that $f(s)$ is constant. It is easy to check that $f(s)$ is entire as
+\begin{equation*}
+	\lim\limits_{s \to 0} \frac{\sin(s)}{s} = 1,
+\end{equation*}
+	hence $\sin(s)$ eradicates the simple poles of $\Gamma(s)$. Furthermore $f(s)$ satisfies
+\begin{equation*}
+\begin{aligned}
+	f(s + 1) 
+	&= \sin(\pi \cbr{s + 1}) \Gamma(s + 1) \Gamma(-s) \\ 
+	&= -\sin(\pi s) s \Gamma(s) \cbr{-\frac{1}{s}} \Gamma(1 - s) = f(s).
+\end{aligned}
+\end{equation*}
+	So $f_t(\sigma + it)$ is $1$-periodic for each fixed $t$ and $f_t \in C^\infty(\field{R} \mysetminus \field{Z})$. Therefore $f(s)$ has a rapidly decreasing converging Fourier series
+\begin{equation*}
+	f(s) = \sum _{n \in \field{Z}} c_n(t) e^{i 2 \pi n \sigma}.
+\end{equation*}
+	Let us consider the $m$-th term of the Fourier series for fixed $s$. By definition we have
+\begin{equation*}
+	f_m(s) = \int _0 ^1 f(s + x) e^{- i 2 \pi m x} dx = c_m(t) e^{i 2 \pi m \sigma}.
+\end{equation*}
+	Since $f_m(s)$ is an analytic function, the Cauchy-Riemann equations imply that
+\begin{equation*}
+	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{2 \pi m c_m(t) \sin(2 \pi m \sigma)},
+\end{equation*}
+	or equivalently
+\begin{equation*}
+	\frac{d}{dt} c_m(t) = -2 \pi m c_m(t),
+\end{equation*}
+	which represents a linear homogenous differential equation with the general solution
+\begin{equation*}
+	c_m(t) = c_m e^{-2 \pi m t}.
+\end{equation*}
+	Finally we can write
+\begin{equation*}
+	f(s) = \sum _{m \in \field{Z}} c_m e^{i 2 \pi m s}.
+\end{equation*}
+	Let us now suppose $m > 0$ and $t \to -\infty$ or if $m < 0$ let $t \to \infty$. Then we have
+\begin{equation*}
+	f_m(\sigma + i t) = c_m e^{-i 2 \pi m \sigma} e^{2 \pi m \abs{t}} = \widetilde{c}_m e^{2 \pi m \abs{t}}.
+\end{equation*}
+	On the other hand
+\begin{equation*}
+	\abs{f_m(\sigma + i t)} = \abs{\int _0 ^1 f(\sigma + x + i t) e^{- i 2 \pi m x} dx} \leq \int _0 ^1 \abs{f(\sigma + x + i t)} dx.
+\end{equation*}
+	According to previous lemma  $\abs{\Gamma(\sigma + i t)}$ is bounded for $\abs{t}$ large enough and we get
+\begin{equation*}
+\begin{aligned}
+	\abs{\widetilde{c}_m} e^{2 \pi m \abs{t}}
+	&\leq \int_0^1 \abs{\sin(x + \sigma + i t)} \abs{\Gamma(x + \sigma + i t) \Gamma(x + 1 - \sigma - i t)} dx \\
+	&\leq \int_0^1 c e^{\pi \abs{t}} dx
+	\leq d e^{\pi \abs{t}}
+\end{aligned}
+\end{equation*}
+	where $c,d \in \field{R}_{> 0}$. Thus by comparing the growth rates we conclude that $\widetilde{c}_m = 0$ for $m \neq 0$ leaving $f(s)$ constant. The value is easily determined by
+\begin{equation*}
+\begin{aligned}
+	\lim\limits_{s \to 0} f(s)
+	&= \lim\limits_{s \to 0} \sin(s) \Gamma(s) \Gamma(1 - s) \\
+	&= \lim\limits_{s \to 0} \frac{\sin(\pi s)}{s} \Gamma(s + 1) \Gamma(1 - s)
+	= \pi.
+\end{aligned}	
+\end{equation*}
+
+\end{proof}
+
+
+\section{Contour Integral Representation}
+After deriving an integral representation of the product of the Gamma and the Riemann zeta function, we manage to meromorphically continue $\zeta$ beyond the $\sigma = 1$ line. We use the fact that path integrals over continuous functions along a part-wise continuous path $\lambda$ are analytic on the whole $\field{C} \mysetminus \abs{\lambda}$.
+
+
+\begin{theorem}
+	We have the identity
+\begin{equation}
+	\zeta(s)\Gamma(s) = \int _0 ^\infty \frac{x^{s - 1} e^{-x}}{1 - e^{-x}} dx \textit{ for } \sigma > 1.
+\end{equation}
+\end{theorem}
+\begin{proof}
+	First we assume that $s \in \field{R}_{> 1}$. Let $x = n t$ where $n \in \field{N}_{> 0}$. By substitution we get
+\begin{equation*}
+	\Gamma(s) = \int _0 ^{\infty} x^{s - 1} e^{-x} (1 - e^{-x})^{-1} dx = n^s \int _0 ^\infty e^{-n t} t^{s - 1} dt,
+\end{equation*}
+equivalently
+\begin{equation*}
+	n^{-s} \Gamma(s) = \int _0 ^\infty e^{-n t} t^{s - 1} dt.
+\end{equation*}
+	After summing up both sides over $n$ ranging from $1$ to $\infty$ we obtain
+\begin{equation*}
+	\zeta(s) \Gamma(s) = \sum _{n=1} ^\infty n^{-s} \Gamma(s) = \sum _{n=0} ^\infty \int _0 ^\infty e^{-(n + 1) t} t^{s - 1} dt.
+\end{equation*}
+	Since the integral can be treated as a Lebesgue integral and since the integrand is nonnegative, Levi’s convergence theorem tells us that the series
+\begin{equation*}
+	\sum _{n=0} ^\infty e^{-(n + 1) t} t^{s - 1} dt
+\end{equation*}
+	converges almost everywhere to a Lebesgue-integrable sum function on $\bcbr{O, \infty}$ and that we can interchange sum and integral such that
+\begin{equation*}
+	\zeta(s) \Gamma(s) = \int _0 ^\infty \sum _{n = 0} ^\infty e^{-(n + 1) t} t^{s - 1} dt.
+\end{equation*}
+	If $t > 0$ then $0 < e^{-t} < 1$. Thus
+\begin{equation*}
+	\sum _{n = 0} ^\infty e^{n t} = \frac{1}{1 - e^{-t}}
+\end{equation*}
+	is a geometric series. Bringing it together we have
+\begin{equation*}
+	\sum _{n=0} ^\infty e^{-(n + 1) t} t^{s - 1} = \frac{e^{-t} t^{s - 1}}{1 - e^{-t}}
+\end{equation*}
+	everywhere on $\bcbr{0, \infty}$, except for $s = 0$, so we get
+\begin{equation*}
+	\zeta(s) \Gamma(s) = \int _0 ^\infty \frac{e^{-t} t^{s - 1}}{1 - e^{-t}} dt
+\end{equation*}
+	for real $s > 1$. To extend it to all complex $s$ with $\sigma > 1$ we note that both members are analytic for $\sigma > 1$. To show that the right member is analytic we assume $1 + \delta \leq \sigma \leq c$, where $c > 1$ and $\delta > 0$ and write
+\begin{equation*}
+	\int _0 ^\infty \abs{\frac{e^{-t} t^{s - 1}}{1 - e^{-t}}} dt \leq \int _0 ^\infty \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt = \cbr{\int _0 ^1 + \int _1 ^\infty} \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt.
+\end{equation*}
+	If $0 \leq t \leq 1$ we have $t^{\sigma - 1} \leq t^\delta$ and if $t \geq 1$ we have $t^{\sigma - 1} \leq t^{c - 1}$. Also, since $e^t - 1 \geq t$ for $t > 0$ we have
+\begin{equation*}
+	\int _0 ^1 \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt \leq \int _0 ^1 \frac{t^\delta}{e^t - 1} \leq \int _0 ^1 t^{\delta - 1} = \frac{1}{\delta}
+\end{equation*}
+	and
+\begin{equation*}
+	\int _1 ^\infty \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt \leq \int _1 ^\infty \frac{e^{-t} t^{c - 1}}{1 - e^{-t}} dt \leq \int _0 ^\infty \frac{e^{-t} t^{c - 1}}{1 - e^{-t}} dt = \Gamma(c)\zeta(c).
+\end{equation*}
+	 This shows that the integral converges uniformly in every strip $1 + \delta \leq \sigma \leq c$, where $\delta > 0$, and therefore represents an analytic function in every such strip, hence also in the half-plane $\sigma > 1$. Therefore, by analytic continuation, our identity holds for all $s$ with $\sigma > 1$.
+\end{proof}
+
+
+\begin{theorem}
+	Let $C = C _1 + C_2 + C_3$ denote a positively oriented contour as shown in Figure~\ref{fig:ContourC}
+\begin{figure}[!htb]
+\begin{minipage}[c]{0.5\textwidth}
+\centering
+\begin{equation*}
+\begin{aligned}
+	C_1 \colon \bcbr{c, \infty} &\to \field{C}, \; C_1(r) = r e^{i \pi} \\
+	C_2 \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_2(\theta) = c e^{i \theta} \\
+	C_3 \colon \bcbr{c, \infty} &\to \field{C}, \; C_3(r) = r e^{-i \pi} \\
+\end{aligned}
+\end{equation*}
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\raggedleft
+\begin{tikzpicture}
+	[decoration={
+		markings,
+		mark=at position 0.75cm with {\arrow[line width=1pt]{>}},
+		mark=at position 3cm with {\arrow[line width=1pt]{>}},
+		mark=at position 5cm with {\arrow[line width=1pt]{>}},
+		mark=at position 7cm with {\arrow[line width=1pt]{>}}
+	}]
+	% The axes
+	\draw[help lines, very thin, ->] (-3,0) -- (2,0) coordinate (xaxis);
+	\draw[help lines, very thin, ->] (0,-2) -- (0,2) coordinate (yaxis);
+	\node[below, gray] at (xaxis) {$\Re(z)$};
+	\node[left, gray] at (yaxis) {$\Im(z)$};
+
+	% The path
+	\path[draw,line width=0.6pt,postaction=decorate] (2.3:-3) -- +(2.3,0) arc (-170:170:0.7) -- +(-2.3,0);
+	% The labels
+
+	\node[below right] {$0$};
+
+	\draw[xshift=0cm] (0,0) node[circle,fill,inner sep=1.2pt](a){};
+	\draw[xshift=0.7cm] (0,0) node[circle,fill,inner sep=1.2pt](a){};
+	\node at (1.4,0.3) {$c < 2 \pi$};
+	\node at (-1.7,-0.5) {$C_1$};
+	\node at (0.8,-0.7) {$C_2$};
+	\node at (-1.7,0.5) {$C_3$};
+\end{tikzpicture}
+\end{minipage}
+\caption{Contour C}
+\label{fig:ContourC}
+\end{figure}
+	looping around the negative real axis and enclosing the point z = 0. The function
+\begin{equation}
+\begin{aligned}
+	&I\colon \field{C} \to \field{C},\\
+	&I(s) = \frac{1}{2 \pi i} \int _C \frac{z^{s - 1} e^z}{1 - e^z} dz
+\end{aligned}
+\end{equation}
+	is entire and
+\begin{equation}
+	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma > 1.
+\end{equation}
+\end{theorem}
+\begin{proof}
+	As the integrand
+\begin{equation*}
+\begin{aligned}
+	&f_z \colon \field{C} \to \field{C},\\
+	&f_z(s) = \frac{z^{s - 1} e^z}{1 - e^z}
+\end{aligned}
+\end{equation*}
+	is an entire function of $s$ for $z \in \{ z \in \field{C} \colon \abs{\Im(z)} < 2 \pi \land z \neq 0 \}$ we only have to show that the integrals along $C_1$ and $C_3$ converge uniformly on every compact disk $D_R = \{ z \in \field{C} \colon \abs{z} \leq R \}$ for $R \in \field{R}_{> 0}$. Along $C_1$ for $r \geq 1$ we have
+\begin{equation*}
+	\abs{z^{s - 1}} = r^{\sigma - 1} \abs{e^{-\pi i (\sigma - 1 + i t)}} = r^{\sigma - 1} e^{\pi t} \leq r^{R - 1} e^{\pi R}
+\end{equation*}
+	and analogously along $C_3$ for $r \geq 1$ we get
+\begin{equation*}
+	\abs{z^{s - 1}} = r^{\sigma - 1} \abs{e^{\pi i (\sigma - 1 + i t)}} = r^{\sigma - 1} e^{-\pi t} \leq r^{R - 1} e^{\pi R}.
+\end{equation*}
+	Hence since $e^r - 1 > \frac{e^r}{2}$ for $r \geq \log(2)$ either on $C_1$ or $C_3$ we have
+\begin{equation*}
+	\abs{\frac{z^{s - 1} e^z}{1 - e^z} \frac{dz}{dr}} \leq \frac{r^{R - 1} e^{\pi R} e^{-r}}{1 - e^{-r}} = \frac{r^{R - 1} e^{\pi R}}{e^{r} - 1} \leq A(R) r^{R - 1} e^{-r}
+\end{equation*}
+	for $r \geq 1$ and a constant $A(R) \in \field{R}_{> 0}$ only depending on $R$. As
+\begin{equation*}
+	\forall c, R \in \field{R}_{> 0} \colon \int _c ^\infty r^{R - 1} e^{-r} dr < \infty
+\end{equation*}
+	we have shown that $C_1$ and $C_3$ converge uniformly on every disk $D_R$. \\
+	For the second claim along $C_1$ and $C_3$ we have 
+\begin{equation*}
+	g(z) \coloneqq \frac{e^z}{1 - e^z} = \frac{e^{r e^{\pm \pi i}}}{1 - e^{r e^{\pm \pi i}}} = \frac{e^{-r}}{1 - e^{-r}} = g(-r).
+\end{equation*}
+	We write
+\begin{equation*}
+\begin{aligned}
+	2 \pi i I_c(s)
+	&= \left(\int _{C_1} + \int _{C_2} + \int _{C_3}\right) z^{s - 1} g(z) dz \\
+	&\begin{aligned}
+		= \int _\infty ^c r^{s - 1} e^{-\pi i s} g(-r) dr
+		&+ i \int _{-\pi} ^{\pi} c^{s - 1} e^{(s - 1) i \theta} c e^{i \theta} g(c e^\theta) d\theta \\ 
+		&+ \int _{c} ^\infty r^{s - 1} e^{-\pi i s} g(-r) dr
+	\end{aligned} \\
+	&= 2 i \sin(\pi s) \int _c ^\infty r^{s - 1} g(-r) dr + i c^s \int _c ^\infty e^{i s \theta} g(c e^{i \theta}) d\theta.
+\end{aligned}
+\end{equation*}
+	Once we have divided $2i$ on both sides we get
+\begin{equation*}
+	\pi I_c(s) = \sin(\pi s)I_{1, c}(s) + I_{2, c}(s).
+\end{equation*}
+	Now we let $c \to 0$. For $I_{1, c}$ previous theorem gives us
+\begin{equation*}
+	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^r}{1 - e^r} dr = \Gamma(s)\zeta(s)
+\end{equation*}
+	For $I_{2, c}$ we have to keep in mind that $g(z)$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus $z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there for $z = c < 2 \pi$. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
+\begin{equation*}
+	\abs{I_{2, c}(s)} \leq \frac{c^\sigma}{2} \int _{-\pi} ^{\pi} e^{-t \sigma} \frac{B}{c} d\theta \leq B e^{\pi \abs{t}} c^{\sigma - 1}.
+\end{equation*}
+	If $\sigma > 1$ then $\lim\limits _{c \to 0} I_{2, c}(s) = 0$. Hence we get
+\begin{equation*}
+	\pi I(s) = \sin(\pi s) \Gamma(s)\zeta(s).
+\end{equation*}
+	By multiplying both sides with $\Gamma(1 - s)$ and plugging in Euler's reflection formula we finally obtain
+\begin{equation*}
+	\zeta(s) = \Gamma(1 - s) I(s).
+\end{equation*}
+\end{proof}
+
+
+\begin{definition}
+	As $\Gamma(1 - s)$ is analytic for $\sigma \geq 1, s \neq 1$ and $I(s)$ is entire we can meromorphically continue $\zeta(s)$ and define 
+\begin{equation*}
+	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma \leq 1, s \neq 1.
+\end{equation*}
+\end{definition}
+
+
+\begin{theorem}
+	We have $\zeta \in \mathcal{H}(\field{C} \mysetminus \fbr{1})$ with a simple pole in $s = 1$ and its residue $Res\cbr{\zeta(s), 1} = 1$.
+\end{theorem}
+\begin{proof}
+	The only singularities that come into question are the poles of $\Gamma(1 - s)$ as $I(s)$ is entire, but we already know that $\zeta(s)$ is analytic for $\sigma > 1$ which leaves $s = 1$ the single possible pole. \\
+	To prove the above statement, assume $s = 1$. The integrals along $C_1$ and $C_3$ take the same values and cancel each other out leaving
+\begin{equation*}
+\begin{aligned}
+	I(1) 
+	&= \frac{1}{2 \pi i} \int _{C_2} \frac{z^{0} e^z}{1 - e^z} dz = \frac{1}{2 \pi i} Res\cbr{\frac{e^z}{1 - e^z}, 1} \\
+	&= \lim\limits _{z \to 0} z \frac{e^z}{1 - e^z} = \lim\limits _{z \to 0} \frac{z}{e^{-z} - 1} = -\lim\limits _{z \to 0} \frac{1}{e^{-z}} = -1.
+\end{aligned}
+\end{equation*}
+	Now we can compute the residue
+\begin{equation*}
+\begin{aligned}	
+	Res\cbr{\zeta(s), 1} 
+	&= \lim\limits _{s \to 1} \cbr{s - 1} \zeta(s) \\
+	&= -\lim\limits _{s \to 1} \cbr{1 - s} \Gamma(1 - s) I(s) \\
+	&= -I(1) \lim\limits _{s \to 1} \Gamma(2 - s) = \Gamma(1) = 1.
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+
+\section{The Functional Equation}
+The functional equation gives a new powerful closed expression of $\zeta$ and allows us to make further assertions about the occurrence of zeros in the whole complex plane.
+
+
+\begin{lemma}
+	Let $r \in \cbbr{0, \pi}$ and $U = \field{C} \mysetminus \fbr{2 n \pi i \colon n \in \field{Z}}$. If
+\begin{equation*}
+	S(r) = \fbr{z \in \field{C} \colon \forall n \in \field{Z} \colon \abs{z - 2 n \pi i} \geq r} \subset U
+\end{equation*}
+	and
+\begin{equation*}
+	g \colon U \to \field{C}, \; g(z) = \frac{e^z}{1 - e^z}
+\end{equation*}
+	then $g(z)$ is bounded such that
+\begin{equation*}
+	\exists A(r) \in \field{R}^+ \; \forall z \in S(r) \colon \abs{g(z)} \leq A(r).
+\end{equation*}
+\end{lemma}
+\begin{proof}
+	Let $z = x + i y \in \field{C}$. First we assume $\abs{x} \leq 1$. Consider the punctured rectangle
+\begin{equation*}
+	Q(r) = \fbr{z \in \field{C} \colon \abs{x} \leq 1, \abs{y} \leq \pi, \abs{z} \geq r} \subset S(r)
+\end{equation*}
+	As $g$ is continuous and $Q(r)$ is compact in $U$ we know that $g \big\vert _{Q(r)}$ has to be bounded by a $B(r) \in \field{R}^+$. The same holds for $g$ in the infinite strip $S(r) \cap \fbr{z \in \field{C} \colon \abs{x} \leq 1}$ because of its $2 \pi i$-periodicity. \\
+	Now suppose $\abs{x} > 1$. We have
+\begin{equation*}
+	\abs{g(z)} = \abs{\frac{e^z}{1 - e^z}} = \frac{e^x}{\abs{1 - e^z}} \leq \frac{e^x}{\abs{1 - e^x}}.
+\end{equation*}
+	For $x > 1$ we get
+\begin{equation*}
+	\abs{g(z)} = \frac{e^x}{e^x - 1} = \frac{1}{1 - e^{-x}} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
+\end{equation*}
+	and analogously for $x < -1$ 
+\begin{equation*}
+	\abs{g(z)} = \frac{e^x}{1 - e^x} \leq \frac{1}{1 - e^{-x}} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
+\end{equation*}
+	and therefore
+\begin{equation*}
+	\forall z \in S(r) \colon \abs{g(z)} \leq \max \fbr{\frac{e}{e - 1}, B(r)} \eqqcolon A(r).
+\end{equation*}
+\end{proof}
+
+
+\begin{theorem}
+	We find that
+\begin{equation}
+	\zeta(1 - s) = \frac{2}{\cbr{2 \pi}^s} \Gamma(s) \cos(\frac{\pi s}{2}) \zeta(s) \textit{ for } \sigma > 1
+\end{equation}
+	or equivalently
+\begin{equation}
+	\zeta(s) = 2\cbr{2 \pi}^s-1 \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0.
+\end{equation}
+	This is the so called functional equation of $\zeta$. By meromorphic continuation the domain is extendable to $\field{C} \mysetminus \fbr{1}$.
+\end{theorem}
+\begin{proof}
+	Let $C_N = C_{1,N} + C_{2,N} + C_{3,N} + C_{4,N}$ denote a negatively orientated contour for $N \in \field{N}$ as shown in Figure~\ref{fig:ContourCN},
+\begin{figure}[!htb]
+\begin{minipage}[c]{0.55\textwidth}
+\centering
+\begin{equation*}
+\begin{aligned}
+	C_{1,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{1,N}(r) = r e^{i \pi} \\
+	C_{2,N} \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_{2,N}(\theta) = c e^{i \theta} \\
+	C_{3,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{3,N}(r) = r e^{-i \pi} \\
+	C_{4,N} \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_{4,N}(\theta) = R(N) e^{i \theta}
+\end{aligned}
+\end{equation*}
+\end{minipage}
+\begin{minipage}[c]{0.45\textwidth}
+\raggedleft
+\begin{tikzpicture}
+	[decoration={
+		markings,
+		mark=at position 0.5cm with {\arrow[line width=1pt]{>}},
+		mark=at position 2cm with {\arrow[line width=1pt]{>}},
+		mark=at position 4cm with {\arrow[line width=1pt]{>}},
+		mark=at position 6cm with {\arrow[line width=1pt]{>}},
+		mark=at position 8.5cm with {\arrow[line width=1pt]{>}},
+		mark=at position 11.5cm with {\arrow[line width=1pt]{>}},
+		mark=at position 14.5cm with {\arrow[line width=1pt]{>}},
+		mark=at position 17.5cm with {\arrow[line width=1pt]{>}}
+	}]
+	% The axes
+	\draw[help lines, very thin, ->] (-2.5,0) -- (2.5,0) coordinate (xaxis);
+	\draw[help lines, very thin, ->] (0,-2.5) -- (0,2.5) coordinate (yaxis);
+	\node[below, gray] at (xaxis) {$\Re(z)$};
+	\node[left, gray] at (yaxis) {$\Im(z)$};
+	% The path
+	\path[draw,line width=0.6pt,postaction=decorate] (3.6:-2) -- +(1.3,0) arc (-170:170:0.7) -- +(-1.3,0) arc (176.5:-176.5:2);
+	% The labels
+	\node[below right] {$0$};
+	\draw[xshift=0cm] (0,0) node[circle,fill,inner sep=1.2pt](a){};
+	\draw[xshift=0.7cm] (0,0) node[circle,fill,inner sep=1.2pt](a){};
+	\draw[xshift=2cm] (0,0) node[circle,fill,inner sep=1.2pt](a){};
+	\node at (0.95,0.3) {$c$};
+	\node at (2.65,0.3) {$R(N)$};
+	\node at (-1.3,-0.5) {$C_{1,N}$};
+	\node at (0.9,-0.8) {$C_{2,N}$};
+	\node at (-1.3,0.5) {$C_{3,N}$};
+	\node at (1.7,1.7) {$C_{4,N}$};
+\end{tikzpicture}
+\end{minipage}
+\caption{Contour $C_N$}
+\label{fig:ContourCN}
+\end{figure}
+	where $0 < c < \pi$ describes the inner and $R(N) = 2(N + 1) \pi$ the outer radius of our two circles $C_{2,N}$ and $C_{4,N}$. Consider
+\begin{equation*}
+	I_N(s) = \frac{1}{2 \pi i} \int _{C_N} \frac{z^{s - 1} e^z}{1 - e^z} dz.
+\end{equation*}
+	We first want to prove that $\lim\limits_{N \to \infty} I_N(s) = I(s)$ for $\sigma < 0$. As
+\begin{equation*}
+\begin{aligned}
+	\lim\limits_{N \to \infty} I_N(s)
+		&= \lim\limits_{N \to \infty} \frac{1}{2 \pi i} \cbr{\int_{C_{1,N}} + \int_{C_{2,N}} + \int_{C_{3,N}} + \int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz \\
+		&= \frac{1}{2 \pi i} \cbr{\int_{C_{1}} + \int_{C_{2}} + \int_{C_{3}} + \lim\limits_{N \to \infty}\int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz
+\end{aligned}
+\end{equation*}
+	it suffices to show that the last integral vanishes. We know that
+\begin{equation*}
+	\abs{z^{s - 1}} = \abs{z^{\sigma - 1}} = \abs{R(N)^{\sigma - 1} e^{-t \sigma}} \leq R(N)^{\sigma -1} e^{\pi \abs{t}}
+\end{equation*}
+	and from the previous lemma we deduce
+\begin{equation*}
+	\abs{\frac{e^z}{1 - e^z}} \leq A(\pi)
+\end{equation*}
+	which leads to
+\begin{equation*}
+\begin{aligned}	
+	\abs{\int_{C_{4,N}} \frac{z^{s - 1} e^z}{1 - e^z} dz}
+	&\leq \int_{-\pi}^{\pi} \abs{\frac{z^{s - 1} e^z}{1 - e^z} z^\prime} d\theta \\
+	&\leq \int_{-\pi}^{\pi} R(N)^\sigma e^{\pi \abs{t}} A(\pi) d\theta \\
+	&= 2 \pi R(N)^\sigma e^{\pi \abs{t}} A(\pi)
+\end{aligned}
+\end{equation*}
+	which converges to $0$ for $N \to \infty$ if $\sigma < 0$. Accordingly we can write
+\begin{equation*}
+	\lim\limits_{N \to \infty} I_N(1 - s) = I(1 - s) \textit{ for } \sigma > 1.
+\end{equation*}
+	Now we want to determine $I_N(1 - s)$ explicitly by using Cauchy's residue theorem. Let
+\begin{equation*}
+	R(n) = Res\cbr{\frac{z^{-s} e^z}{1 - e^z}, 2 n \pi i}
+\end{equation*}
+	where
+\begin{equation*}
+\begin{aligned}
+	R(n) &= \lim\limits_{z \to 2 n \pi i} \cbr{z - 2 n \pi i} \frac{z^{-s} e^z}{1 - e^z} \\
+	&= \cbr{2 n \pi i}^{-s} e^{2 n \pi i} \lim\limits_{z \to 2 n \pi i} \frac{z - 2 n \pi i}{1 - e^z} \\
+	&= - \cbr{2 n \pi i}^{-s}.
+\end{aligned} 
+\end{equation*}
+	We get
+\begin{equation*}
+\begin{aligned}	
+	I_N(1 - s)
+	&= - \sum _{\substack{n = -N \\ n \neq 0}} ^N R(n) = - \sum _{n = 1} ^N R(n) + R(-n) \\
+	&= \sum _{n = 1} ^N \cbr{2 n \pi i}^{-s} + \sum _{n = 1} ^N \cbr{-2 n \pi i}^{-s} \\
+	&= \cbr{\frac{e^{-\frac{\pi i s}{2}}}{\cbr{2 \pi}^s} + \frac{e^{\frac{\pi i s}{2}}}{\cbr{2 \pi}^s}} \sum _{n = 1} ^N n^{-s} \\
+	&= \frac{2}{\cbr{2 \pi}^s} \cos(\frac{\pi s}{2}) \sum _{n = 1} ^N n^{-s}.
+\end{aligned}
+\end{equation*}
+	Finally we obtain
+\begin{equation*}
+\begin{aligned}
+	\zeta(1 - s) &= \Gamma(s) I(1 - s) = \Gamma(s) \lim\limits_{N \to \infty} I_N(1 - s) \\
+	&= \frac{2}{\cbr{2 \pi}^s} \Gamma(s) \cos(\frac{\pi s}{2}) \zeta(s)
+\end{aligned}
+\end{equation*}
+	and by substituting s with 1 - s we have
+\begin{equation*}
+	\zeta(s) = 2\cbr{2 \pi}^{s - 1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s).
+\end{equation*}
+\end{proof}
+
+
+\subsection{Trivial Zeros and Critical Strip}
+
+
+\begin{corollary}
+	$\zeta(s)$ has zeros at $s = -2n$ for $n \in \field{N}_0$. These are called the trivial zeros.
+\end{corollary}
+\begin{proof}
+	The functional equation of $\zeta(s)$ becomes zero whenever $\sin(\frac{\pi s}{2})$ vanishes, which in fact happens when $s = -2n$.
+\end{proof}
+
+
+\begin{corollary}
+	$\zeta(s)$ can only have nontrivial zeros within the strip $0 \leq \sigma \leq 1$. This region is also known as the critical strip.
+\end{corollary}
+\begin{proof}
+	Consider the second functional equation from above
+\begin{equation*}
+	\zeta(s) = 2\cbr{2 \pi}^{s-1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0. 
+\end{equation*}
+	We already know that $\zeta(s)$ has no zeros for $\sigma > 1$. We also have shown that $\Gamma(s)$ doesn't vanish on its domain and the only remaining factor is $\sin(\frac{\pi s}{2})$, which in fact generates the trivial zeros. Thus $\zeta(s)$ has no nontrivial zeros for $\sigma < 0$.
+\end{proof}
