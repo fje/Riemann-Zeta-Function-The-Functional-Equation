@@ -154,7 +154,11 @@ In this section we introduce infinite products and talk about their convergence.
 \begin{equation*}	
 	\arg(P) - \pi < \arg(P_n) \leq \arg(P) + \pi
 \end{equation*}
-	and set $\log(P_n) = \log(\abs{P_n}) + i \arg(P_n)$. Since $\log$ is a multivalued function we get $S_n = \log(P_n) + h_n 2 \pi i$ for $h_n \in \field(Z)$. For two consecutive terms we can write
+	and set $\log(P_n) = \log(\abs{P_n}) + i \arg(P_n)$. Since $\log$ is a multivalued function we get
+\begin{equation*}
+	S_n = \log(P_n) + h_n 2 \pi i
+\end{equation*}
+	for $h_n \in \field{Z}$. For two consecutive terms we can write
 \begin{equation*}
 	(h_{n + 1} - h_n) 2 \pi i = \log(1 + a_{n + 1}) + \log(P_n) - \log(P_{n + 1}).
 \end{equation*}
@@ -170,7 +174,7 @@ In this section we introduce infinite products and talk about their convergence.
 \begin{equation*}
 	\abs{h_{n + 1} - h_n} < 1,
 \end{equation*}
-	hence for a sufficiently large $n$ we have $h_n = h_n + 1 = h$ and we can write
+	hence for a sufficiently large $n$ we have $h_n = h_{n + 1} = h$ and we can write
 \begin{equation*}
 	S = \log(P) + h 2 \pi i.
 \end{equation*}
