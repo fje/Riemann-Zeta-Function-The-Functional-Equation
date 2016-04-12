@@ -34,11 +34,11 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \end{equation*}
 	for $k \in \cbr{1, \infty}$. For the first integral we find
 \begin{equation*}
-	\int _0 ^1 x^{\sigma - 1} e^{-x} dx \leq \int _0 ^1 x^{\sigma - 1} dx = \frac{1}{\sigma}
+	\int _0 ^1 x^{\sigma - 1} e^{-x} dx \leq \int _0 ^1 x^{\sigma - 1} dx = \frac{1}{\sigma},
 \end{equation*}
 	since $e^{-x} \leq 1$ for $x > 0$. As the second integral clearly exists for every $k$, we proceed to the third integral. Note that
 \begin{equation*}
-	\forall r \in \field{R} \colon \lim\limits_{x \to \infty} x^r e^{-\frac{x}{2}} = 0
+	\forall r \in \field{R} \colon \lim\limits_{x \to \infty} x^r e^{-\frac{x}{2}} = 0,
 \end{equation*}
  	hence
 \begin{equation*}
@@ -94,10 +94,13 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{equation*}
 	\Gamma(s) = \frac{1}{s} \Gamma(s + 1) = \dots = \frac{1}{s \cbr{s + 1} \dots \cbr{s + n - 1}} \Gamma(s + n) = \frac{\Gamma(s + n)}{P_n(s)}.
 \end{equation*}
-	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $\lim\limits_{n \to \infty} P_n(s)$, namely $\ker\cbr{P_\infty(s)} = \field{Z}_{\leq 0}$. \\
+	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $\lim\limits_{n \to \infty} P_n(s)$, namely
+\begin{equation*}
+	\ker\cbr{P_\infty(s)} = \field{Z}_{\leq 0}.
+\end{equation*}
 	Now we want to calculate the residues of $\Gamma(s)$ and find
 \begin{equation*}
-	Res\cbr{\Gamma(s), -n} = \lim\limits_{s \to -n} \cbr{s + n} \frac{\Gamma(s + n + 1)}{s \cbr{s + 1} \dots \cbr{s + n}} = \frac{\cbr{-1}^n}{n!}
+	Res\cbr{\Gamma(s), -n} = \lim\limits_{s \to -n} \cbr{s + n} \frac{\Gamma(s + n + 1)}{s \cbr{s + 1} \dots \cbr{s + n}} = \frac{\cbr{-1}^n}{n!}.
 \end{equation*}
 \end{proof}
 
@@ -184,7 +187,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \end{equation*}
 	Since $f_m(s)$ is an analytic function, the Cauchy-Riemann equations imply that
 \begin{equation*}
-	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{2 \pi m c_m(t) \sin(2 \pi m \sigma)},
+	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{2 \pi m c_m(t) \sin(2 \pi m \sigma)}
 \end{equation*}
 	or equivalently
 \begin{equation*}
@@ -206,13 +209,13 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{equation*}
 	\abs{f_m(\sigma + i t)} = \abs{\int _0 ^1 f(\sigma + x + i t) e^{- i 2 \pi m x} dx} \leq \int _0 ^1 \abs{f(\sigma + x + i t)} dx.
 \end{equation*}
-	According to previous lemma  $\abs{\Gamma(\sigma + i t)}$ is bounded for $\abs{t}$ large enough and we get
+	According to the previous lemma  $\abs{\Gamma(\sigma + i t)}$ is bounded for $\abs{t}$ large enough and we get
 \begin{equation*}
 \begin{aligned}
 	\abs{\widetilde{c}_m} e^{2 \pi m \abs{t}}
 	&\leq \int_0^1 \abs{\sin(x + \sigma + i t)} \abs{\Gamma(x + \sigma + i t) \Gamma(x + 1 - \sigma - i t)} dx \\
 	&\leq \int_0^1 c e^{\pi \abs{t}} dx
-	\leq d e^{\pi \abs{t}}
+	\leq d e^{\pi \abs{t}},
 \end{aligned}
 \end{equation*}
 	where $c,d \in \field{R}_{> 0}$. Thus by comparing the growth rates we conclude that $\widetilde{c}_m = 0$ for $m \neq 0$ leaving $f(s)$ constant. The value is easily determined by
@@ -224,7 +227,6 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	= \pi.
 \end{aligned}	
 \end{equation*}
-
 \end{proof}
 
 
