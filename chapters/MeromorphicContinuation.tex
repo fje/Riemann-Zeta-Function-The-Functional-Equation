@@ -395,7 +395,7 @@ equivalently
 \end{equation*}
 	Now we let $c \to 0$. For $I_{1, c}$ previous theorem gives us
 \begin{equation*}
-	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^r}{1 - e^r} dr = \Gamma(s)\zeta(s)
+	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^r}{1 - e^r} dr = \Gamma(s)\zeta(s).
 \end{equation*}
 	For $I_{2, c}$ we have to keep in mind that $g(z)$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus $z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there for $z = c < 2 \pi$. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
 \begin{equation*}
@@ -495,7 +495,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \end{equation}
 	or equivalently
 \begin{equation}
-	\zeta(s) = 2\cbr{2 \pi}^s-1 \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0.
+	\zeta(s) = 2\cbr{2 \pi}^{s - 1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0.
 \end{equation}
 	This is the so called functional equation of $\zeta$. By meromorphic continuation the domain is extendable to $\field{C} \mysetminus \fbr{1}$.
 \end{theorem}
@@ -568,7 +568,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \end{equation*}
 	and from the previous lemma we deduce
 \begin{equation*}
-	\abs{\frac{e^z}{1 - e^z}} \leq A(\pi)
+	\abs{\frac{e^z}{1 - e^z}} \leq A(\pi),
 \end{equation*}
 	which leads to
 \begin{equation*}
@@ -576,7 +576,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 	\abs{\int_{C_{4,N}} \frac{z^{s - 1} e^z}{1 - e^z} dz}
 	&\leq \int_{-\pi}^{\pi} \abs{\frac{z^{s - 1} e^z}{1 - e^z} z^\prime} d\theta \\
 	&\leq \int_{-\pi}^{\pi} R(N)^\sigma e^{\pi \abs{t}} A(\pi) d\theta \\
-	&= 2 \pi R(N)^\sigma e^{\pi \abs{t}} A(\pi)
+	&= 2 \pi R(N)^\sigma e^{\pi \abs{t}} A(\pi),
 \end{aligned}
 \end{equation*}
 	which converges to $0$ for $N \to \infty$ if $\sigma < 0$. Accordingly we can write
@@ -585,7 +585,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \end{equation*}
 	Now we want to determine $I_N(1 - s)$ explicitly by using Cauchy's residue theorem. Let
 \begin{equation*}
-	R(n) = Res\cbr{\frac{z^{-s} e^z}{1 - e^z}, 2 n \pi i}
+	R(n) = Res\cbr{\frac{z^{-s} e^z}{1 - e^z}, 2 n \pi i},
 \end{equation*}
 	where
 \begin{equation*}
@@ -612,7 +612,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 	&= \frac{2}{\cbr{2 \pi}^s} \Gamma(s) \cos(\frac{\pi s}{2}) \zeta(s)
 \end{aligned}
 \end{equation*}
-	and by substituting s with 1 - s we have
+	and by substituting $s$ with $1 - s$ we have
 \begin{equation*}
 	\zeta(s) = 2\cbr{2 \pi}^{s - 1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s).
 \end{equation*}
