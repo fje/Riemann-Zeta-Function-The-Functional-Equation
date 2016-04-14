@@ -102,7 +102,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{lemma}
 	In particular we have
 \begin{equation*}
-	\Gamma(n + 1) = n! \textit{ for } n \in \field{N}_0.
+	\Gamma(n + 1) = n! \hsp \textit{ for } n \in \field{N}_0.
 \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -150,7 +150,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{theorem}[Euler's reflection formula]
 	We have
 \begin{equation*}
-	\Gamma(s)\Gamma(1 - s) = \frac{\pi}{\sin(\pi s)} \hsp \textit{  for } s \in \field{C} \mysetminus \field{Z}.
+	\Gamma(s)\Gamma(1 - s) = \frac{\pi}{\sin(\pi s)} \hsp \textit{ for } s \in \field{C} \mysetminus \field{Z}.
 \end{equation*}
 	Hence $\Gamma$ has no zeros and its reciprocal function $\frac{1}{\Gamma}$ is well defined with zeros at the simple poles of $\Gamma$.
 \end{theorem}
@@ -237,7 +237,7 @@ After deriving an integral representation of the product of the gamma and the Ri
 \begin{theorem}
 	We have the identity
 \begin{equation}
-	\zeta(s)\Gamma(s) = \int _0 ^\infty \frac{x^{s - 1} e^{-x}}{1 - e^{-x}} dx \textit{ for } \sigma > 1.
+	\zeta(s)\Gamma(s) = \int _0 ^\infty \frac{x^{s - 1} e^{-x}}{1 - e^{-x}} dx \hsp \textit{ for } \sigma > 1.
 \end{equation}
 \end{theorem}
 \begin{proof}
@@ -344,7 +344,7 @@ equivalently
 \end{equation}
 	is entire and
 \begin{equation}
-	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma > 1.
+	\zeta(s) = \Gamma(1 - s) I(s) \hsp \textit{ for } \sigma > 1.
 \end{equation}
 \end{theorem}
 \begin{proof}
@@ -415,7 +415,7 @@ equivalently
 \begin{definition}
 	As the function $s \mapsto \Gamma(1 - s)$ is analytic for $\sigma \leq 1, s \neq 1$ and $I$ is entire we can meromorphically continue $\zeta$ and define 
 \begin{equation*}
-	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma \leq 1, s \neq 1.
+	\zeta(s) = \Gamma(1 - s) I(s) \hsp \textit{ for } \sigma \leq 1, s \neq 1.
 \end{equation*}
 \end{definition}
 
@@ -494,11 +494,11 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \begin{theorem}
 	We find that
 \begin{equation}
-	\zeta(1 - s) = \frac{2}{\cbr{2 \pi}^s} \Gamma(s) \cos(\frac{\pi s}{2}) \zeta(s) \textit{ for } \sigma > 1
+	\zeta(1 - s) = \frac{2}{\cbr{2 \pi}^s} \Gamma(s) \cos(\frac{\pi s}{2}) \zeta(s) \hsp \textit{ for } \sigma > 1
 \end{equation}
 	or equivalently
 \begin{equation}
-	\zeta(s) = 2\cbr{2 \pi}^{s - 1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0.
+	\zeta(s) = 2\cbr{2 \pi}^{s - 1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \hsp \textit{ for } \sigma < 0.
 \end{equation}
 	This is the so called functional equation of $\zeta$. By meromorphic continuation the domain is extendable to $\field{C} \mysetminus \fbr{1}$.
 \end{theorem}
@@ -584,7 +584,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \end{equation*}
 	which converges to $0$ for $N \to \infty$ if $\sigma < 0$. Accordingly we can write
 \begin{equation*}
-	\lim\limits_{N \to \infty} I_N(1 - s) = I(1 - s) \textit{ for } \sigma > 1.
+	\lim\limits_{N \to \infty} I_N(1 - s) = I(1 - s) \hsp \textit{ for } \sigma > 1.
 \end{equation*}
 	Now we want to determine $I_N(1 - s)$ explicitly by using Cauchy's residue theorem. Let
 \begin{equation*}
@@ -639,7 +639,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \begin{proof}
 	Consider the second functional equation from above
 \begin{equation*}
-	\zeta(s) = 2\cbr{2 \pi}^{s-1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0. 
+	\zeta(s) = 2\cbr{2 \pi}^{s-1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \hsp \textit{ for } \sigma < 0. 
 \end{equation*}
 	We already know that $\zeta$ has no zeros for $\sigma > 1$. We also have shown that $\Gamma$ doesn't vanish on its domain and the only remaining factor is $\sin(\frac{\pi s}{2})$, which in fact generates the trivial zeros. Thus $\zeta$ has no nontrivial zeros for $\sigma < 0$.
 \end{proof}
