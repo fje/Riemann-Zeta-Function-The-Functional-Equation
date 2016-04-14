@@ -1,9 +1,10 @@
 The Riemann zeta function is one of the most important functions in analytic number theory, particularly since it encodes a lot of information about prime numbers. Thus it is well worth taking a closer look at its properties and behaviour in the complex plane. Special attention should be paid to the zeros of the function as they might give some indication of the mysterious distribution of primes. \\
+This work is mainly based on \cite{Apostol1976} and uses some definitions and theorems from \cite{Ahlfors1966} as well. \\
 Henceforth let $s \in \field{C}$ be a complex number where $\sigma \coloneqq \Re(s)$ and $t \coloneqq \Im(s)$. The space of all holomorphic functions on a domain $S \subseteq \field{C}$ shall be denoted by $\mathcal{H}(S) \coloneqq \fbr{f \in \field{C} ^S \colon f \textit{ holomorphic}}$.
 
 
 \section{Elementary Properties of $\zeta$}
-First of all we want to draw some conclusions about the convergence of the Riemann zeta function and its holomorphy in the right half-plane.
+First of all we want to draw some conclusions about the convergence of the Riemann zeta function and its holomorphy on its domain.
 
 
 \begin{definition}
@@ -39,7 +40,7 @@ First of all we want to draw some conclusions about the convergence of the Riema
 \end{equation*}
 	Hence we obtain
 \begin{equation*}
-	\abs{\zeta(s)} = \abs{\sum_{n = 1}^{\infty} n^{-s}} \leq \sum_{n = 1}^{\infty} \abs{n^{-s}} = \sum_{n = 1}^{\infty} n^{-\sigma}.
+	\sum_{n = 1}^{\infty} \abs{n^{-s}} = \sum_{n = 1}^{\infty} n^{-\sigma}.
 \end{equation*}
 	We know that the right sum converges for $\sigma > 1$. Consequently $\zeta(s)$ converges absolutely.
 \end{proof}
@@ -82,7 +83,7 @@ First of all we want to draw some conclusions about the convergence of the Riema
 \begin{equation*}
 \begin{aligned}
 	\norm{f_n^{(k)} - f^{(k)}}_{D_l}
-	&\leq \sup\limits_{z \in D_l} \fbr{\frac{k!}{2 \pi} \int _{\partial D_r}\abs{\frac{f_n(\xi) - f(\xi)}{\cbr{\xi - z}^{k + 1}}} d\xi} \\
+	&\leq \sup\limits_{z \in D_l} \fbr{\frac{k!}{2 \pi} \int _{\partial D_r}\abs{\frac{f_n(\xi) - f(\xi)}{\cbr{\xi - z}^{k + 1}}} \abs{d\xi}} \\
 	&\leq \sup\limits_{z \in D_l} \fbr{\frac{k! r}{\dist(z, \partial D_r)^{k + 1}} \norm{f_n - f}_{\partial D_r}} \\
 	&\leq \frac{k! r}{(r - l)^{k + 1}} \norm{f_n - f}_{\partial D_r}.
 \end{aligned}
@@ -108,7 +109,7 @@ First of all we want to draw some conclusions about the convergence of the Riema
 	\end{aligned}
 \end{aligned}
 \end{equation*}
-	Therefore $\zeta_m \big\vert _R \to \zeta \big\vert _R$ uniformly and according to Weierstrass $\zeta$ is holomporphic for $\sigma > 1$.
+	Therefore $\zeta_m \big\vert _R \to \zeta \big\vert _R$ uniformly and according to Weierstrass $\zeta$ is holomorphic for $\sigma > 1$.
 \end{proof}
 
 
@@ -120,11 +121,15 @@ In this section we introduce infinite products and talk about their convergence.
 
 
 \begin{definition}
-	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. If
+	Let $(a_n)_{n \in \field{N}} \in \field{C}^\field{N}$. The infinite product
 \begin{equation*}
-	\prod_{n \in \field{N}} \cbr{1 + a_n} \in \field{C} \mysetminus \fbr{0}
+	\prod_{n \in \field{N}} \cbr{1 + a_n}
 \end{equation*}
-	the infinite product is said to be convergent. We speak of absolute convergence if the same holds true for $\abs{a_n}$.
+	is said to be convergent if
+\begin{equation*}
+	\lim\limits_{N \to \infty} \prod _{n = 1} ^N \cbr{1 + a_n} \in \field{C} \mysetminus \fbr{0}.
+\end{equation*}
+	We speak of absolute convergence if the same holds true for $\abs{a_n}$.
 \end{definition}
 
 
@@ -142,9 +147,10 @@ In this section we introduce infinite products and talk about their convergence.
 \end{aligned}
 \end{equation*}
 \end{lemma}
-\begin{proof} Let the infinite product be denoted by P, its partial products by $P_n$ and respectively the series by $S$ and its partial sums by $S_n$. If $P_n$ converges then
+\begin{proof}
+	Let the infinite product be denoted by $P$, its partial products by $P_n$ and respectively the series by $S$ and its partial sums by $S_n$. If $P_n$ converges then
 \begin{equation*}
-	\lim\limits_{n \to \infty} \frac{P_n}{P_{n - 1}} = \lim\limits_{n \to \infty} 1 + a_n = 1.
+	\lim\limits_{n \to \infty} \frac{P_n}{P_{n - 1}} = \lim\limits_{n \to \infty} \cbr{1 + a_n} = 1.
 \end{equation*}
 	Hence $(a_n)_{n \in \field{N}}$ has to be a null sequence. To prove $(i) \implies (ii)$ we assume that $P_n \to P$ and we choose the principal value of $\log(P)$, namely
 \begin{equation*}
@@ -174,11 +180,14 @@ In this section we introduce infinite products and talk about their convergence.
 \begin{equation*}
 	\abs{h_{n + 1} - h_n} < 1,
 \end{equation*}
-	hence for a sufficiently large $n$ we have $h_n = h_{n + 1} = h$ and we can write
+	hence for a sufficiently large $n$ we have $h_n = h_{n + 1} = h$ and have
 \begin{equation*}
-	S = \log(P) + h 2 \pi i.
+	\lim\limits_{n \to \infty} S_n = S = \log(P) + h 2 \pi i.
 \end{equation*}
-	To show $(ii) \implies (i)$ we assume that $S_n \to S$ and by writing $P_n = e^{S_n}$ for the principal branch of $\log$ we conclude that $P = e^{S} \in \field{C} \mysetminus {0}$.
+	To show $(ii) \implies (i)$ we assume that $S_n \to S$ and by writing $P_n = e^{S_n}$ for the principal branch of $\log$ we conclude that
+\begin{equation*}
+	\lim\limits_{n \to \infty} P_n = P = e^{S} \in \field{C} \mysetminus {0}.
+\end{equation*}
 \end{proof}
 
 
@@ -203,12 +212,15 @@ In this section we introduce infinite products and talk about their convergence.
 \end{proof}
 
 
+\subsection{Euler Product Representation of $\zeta$}
+
+
 \begin{definition}
 	An arithmetic function $f \in \field{C}^\field{N}$ satisfying
 \begin{equation*}
 	\forall n,m \in \field{N} \colon \gcd\cbr{n, m} = 1 \implies f(n m) = f(n) f(m)
 \end{equation*}
-	is called multiplicative. If even
+	is called multiplicative and we particularly have $f(1) = 1$. If even
 \begin{equation*}
 	\forall n,m \in \field{N} \colon f(n m) = f(n) f(m)
 \end{equation*}
@@ -216,21 +228,18 @@ In this section we introduce infinite products and talk about their convergence.
 \end{definition}
 
 
-\subsection{Euler Product Representation of $\zeta$}
-
-
 \begin{theorem}
 	Let $\mathcal{P} = \fbr{p \in \field{N} \colon \; p \textit{ prime number}}$ and let $f \in \field{C}^\field{N}$ be an arithmetic function. If $\sum_{n \in \field{N}} f(n)$ converges absolutely and if $f$ is multiplicative, the series can be expressed by an absolutely convergent infinite product
 \begin{equation*}
 	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)}.
 \end{equation*}
-	If $f$ even is completely multiplicative we have
+	If $f$ even is completely multiplicative and fulfils $\abs{f(p)} < 1 \; \forall p \in \mathcal{P}$ we have
 \begin{equation*}
 	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \frac{1}{1 - f(p)}.
 \end{equation*}
 \end{theorem}
 \begin{proof}
-	Take the product
+	Let $\mathcal{P}_{\leq x} \coloneqq \fbr{p \in \mathcal{P} \colon \; p \leq x}$. Take the product
 \begin{equation*}
 	Q(x) = \prod_{p \in \mathcal{P}_{\leq x}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)}.
 \end{equation*}
@@ -269,7 +278,7 @@ In this section we introduce infinite products and talk about their convergence.
 \begin{equation*}
 	\sum_{p \in \mathcal{P}} \abs{\sum_{i = 1}^\infty f(p^i)} < \infty.
 \end{equation*}
-	Therefore $Q(\infty)$ is absolutely convergent. If $f$ is completely multiplicative the infinite product simplifies to
+	Therefore $Q(\infty)$ is absolutely convergent. If $f$ is completely multiplicative and fulfils $\abs{f(p)} < 1 \; \forall p \in \mathcal{P}$ the infinite product simplifies to
 \begin{equation*}
 	\sum_{n \in \field{N}} f(n) = \prod_{p \in \mathcal{P}} \cbr{1 + \sum_{i = 1}^\infty f(p^i)} = \prod_{p \in \mathcal{P}} \cbr{\sum_{i = 0}^\infty f(p)^i} = \prod_{p \in \mathcal{P}} \frac{1}{1 - f(p)}.
 \end{equation*}
@@ -283,7 +292,7 @@ In this section we introduce infinite products and talk about their convergence.
 \end{equation*}
 \end{corollary}
 \begin{proof}
-	Since $f(n) = n^{-s}$ is a completely multiplicative arithmetic function and the series converges absolutely the above statement follows directly from previous theorem.
+	Since $f(n) = n^{-s}$ is a completely multiplicative arithmetic function, $\abs{f(n)} = n^{-\sigma} < 1$ for $\sigma > 1$ and the series converges absolutely the above statement follows directly from the previous theorem.
 \end{proof}
 
 

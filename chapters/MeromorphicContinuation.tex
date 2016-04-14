@@ -13,7 +13,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	&\Gamma(s) = \int _0 ^\infty x^{s - 1} e^{-x} dx
 \end{aligned}
 \end{equation*}
-	is called gamma function.
+	is called the gamma function.
 \end{definition}
 
 
@@ -21,14 +21,14 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 
 
 \begin{theorem}
-	$\Gamma(s)$ is well defined for $\sigma > 0$
+	$\Gamma(s)$ converges absolutely for $\sigma > 0$
 \end{theorem}
 \begin{proof}
 	We can write
 \begin{equation*}
 \begin{aligned}
 	\abs{\Gamma(s)}
-	&= \abs{\int _0 ^\infty x^{s - 1} e^{-x} dx} \leq \int _0 ^\infty \abs{x^{s - 1} e^{-x}} \\
+	&= \abs{\int _0 ^\infty x^{s - 1} e^{-x} dx} \leq \int _0 ^\infty \abs{x^{s - 1} e^{-x}} dx \\
 	&= \int _0 ^1 x^{\sigma - 1} e^{-x} dx + \int _1 ^k x^{\sigma - 1} e^{-x} dx + \int _k ^\infty x^{\sigma - 1} e^{-x} dx
 \end{aligned}
 \end{equation*}
@@ -42,7 +42,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \end{equation*}
  	hence
 \begin{equation*}
-	\exists k \in \cbr{0, \infty} \; \forall x > 0 \geq k \colon \; x^r e^{-\frac{x}{2}} \leq 1.
+	\exists k \in \cbr{0, \infty} \; \forall x \geq k \colon \; x^r e^{-\frac{x}{2}} \leq 1.
 \end{equation*}
 	Thus we have
 \begin{equation*}
@@ -55,14 +55,11 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	$\Gamma(s)$ is holomorphic for $\sigma > 0$.
 \end{theorem}
 \begin{proof}
-	Let $R = \bbr{a, b} \times i\bbr{c, d} \subset \field{C}$ with $0 < \delta \leq a$. From the previous theorem we deduce
+	Let $\partial \triangle \subset \{ s \in \field{C} \colon \; \sigma > 0 \}$ denote the boundary of a solid triangle. Since $\Gamma$ converges absolutely for $\sigma > 0$ we can use Fubini's theorem for integrable functions in order to interchange the double integral and we get
 \begin{equation*}
-\begin{aligned}
-	&\forall \eps > 0 \; \exists k \in \field{N} \; \forall m \geq k \; \forall s \in R \colon \\
-	&\abs{\int _0 ^\infty x^{s - 1} e^{-x} dx - \int _0 ^m x^{s - 1} e^{-x} dx} \leq \abs{\int _m ^\infty x^{s - 1} e^{-x} dx} \leq 2 e^{-\frac{m}{2}} < \eps,
-\end{aligned}
+	\int _{\partial \triangle} \Gamma(s) ds = \int _{\partial \triangle} \int _0 ^\infty x^{s - 1} e^{-x} dx ds = \int _0 ^\infty \int _{\partial \triangle} x^{s - 1} e^{-x} ds dx = 0.
 \end{equation*}
-	hence $\Gamma_m \big\vert _R \to \Gamma \big\vert _R$ uniformly and according to Weierstrass $\Gamma$ is holomorphic for $\sigma > 0$.
+	As the integrand of $\Gamma$ is a holomorphic function of $s$ Goursat's lemma justifies that the whole expression has to be $0$. Therefore Morera's theorem finally gives us that $\Gamma(s)$ is holomorphic for $\sigma > 0$.
 \end{proof}
 
 
@@ -90,14 +87,11 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \end{equation*}
 \end{theorem}
 \begin{proof}
-	For fixed $s \in \field{C} \mysetminus \field{Z}_{\leq 0}$ let $n \in \field{N}_0$ be such that $\sigma + n > 0$. Then we have
+	For fixed $s \in \field{C} \mysetminus \field{Z}_{\leq 0}$ let $n \in \field{N}_0$ be such that $\sigma + n > 0$. Then we formally have
 \begin{equation*}
 	\Gamma(s) = \frac{1}{s} \Gamma(s + 1) = \dots = \frac{1}{s \cbr{s + 1} \dots \cbr{s + n - 1}} \Gamma(s + n) = \frac{\Gamma(s + n)}{P_n(s)}.
 \end{equation*}
-	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $\lim\limits_{n \to \infty} P_n(s)$, namely
-\begin{equation*}
-	\ker\cbr{P_\infty(s)} = \field{Z}_{\leq 0}.
-\end{equation*}
+	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $P_n(s)$ for $n \in \field{N}$, namely $\field{Z}_{\leq 0}$. \\
 	Now we want to calculate the residues of $\Gamma(s)$ and find
 \begin{equation*}
 	Res\cbr{\Gamma(s), -n} = \lim\limits_{s \to -n} \cbr{s + n} \frac{\Gamma(s + n + 1)}{s \cbr{s + 1} \dots \cbr{s + n}} = \frac{\cbr{-1}^n}{n!}.
@@ -135,17 +129,17 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{aligned}	
 	\Gamma(\sigma + i t)
 	&= \int_0^\infty x^{\sigma + i t - 1} e^{-x} dx \\
-	&= \int_{-\infty}^\infty e^{2 \pi i y t} e^{2 \pi y (\sigma - 1)} e^{-e^{2 \pi y}} dy = \int_{-\infty}^\infty e^{2 \pi i y t} \hat{g}(y) dy.
+	&= \int_{-\infty}^\infty e^{2 \pi i y t} \cbr{2 \pi e^{2 \pi y \sigma} e^{-e^{2 \pi y}}} dy = \int_{-\infty}^\infty e^{2 \pi i y t} \hat{g}(y) dy.
 \end{aligned}
 \end{equation*}
-	Per definition of the Fourier transform, the above formula says that the function
+	By definition of the Fourier transform, the above formula says that the function
 \begin{equation*}
 \begin{aligned}
 	&g\colon \field{R} \to \field{C}, \\
 	&g(t) = \Gamma(\sigma + i t)
 \end{aligned}
 \end{equation*}
-	is the inverse Fourier transform of $\hat{g}$. Since the (inverse) Fourier transform describes an isomorphism on the Schwartz space $\mathcal{S}$, we deduce that $g$ has to decrease more rapidly for an increasing $\abs{t}$ than any polynomial and therefore $g \in \mathcal{S}(\field{R})$. In other words it in fact follows that
+	is the inverse Fourier transform of $\hat{g}$. Since the (inverse) Fourier transform describes an isomorphism on the Schwartz space $\mathcal{S}$, we deduce that $g$ has to decrease more rapidly for an increasing $\abs{t}$ than any polynomial. In other words it in fact follows that
 \begin{equation*}
 	\lim\limits_{\abs{t} \to \infty} g(t) = \lim\limits_{\abs{t} \to \infty} \Gamma(\sigma + i t) = 0.
 \end{equation*}
@@ -177,43 +171,49 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	&= -\sin(\pi s) s \Gamma(s) \cbr{-\frac{1}{s}} \Gamma(1 - s) = f(s).
 \end{aligned}
 \end{equation*}
-	So $f_t(\sigma + it)$ is $1$-periodic for each fixed $t$ and $f_t \in C^\infty(\field{R} \mysetminus \field{Z})$. Therefore $f(s)$ has a rapidly decreasing converging Fourier series
+	So for fixed $t$ $f(\sigma + it)$ is $1$-periodic and $f \in C^\infty(\field{R} / \field{Z})$. Therefore $f(s)$ has a rapidly decreasing converging Fourier series
 \begin{equation*}
 	f(s) = \sum _{n \in \field{Z}} c_n(t) e^{i 2 \pi n \sigma}.
 \end{equation*}
 	Let us consider the $m$-th term of the Fourier series for fixed $s$. By definition we have
 \begin{equation*}
-	f_m(s) = \int _0 ^1 f(s + x) e^{- i 2 \pi m x} dx = c_m(t) e^{i 2 \pi m \sigma}.
+\begin{aligned}	
+	f_m(s)
+	&= c_m(t) e^{i 2 \pi m \sigma} \\
+	&= \cbr{\int _0 ^1 f(x + it) e^{- i 2 \pi m x} dx} e^{i 2 \pi n \sigma}= \int _0 ^1 f(x + it) e^{- i 2 \pi m (x - \sigma)} dx \\
+	&= \int _{-\sigma} ^{1 - \sigma} f(x + \sigma + it) e^{- i 2 \pi m x} dx = \int _0 ^1 f(x + s) e^{- i 2 \pi m x} dx \\
+	&= \int _0 ^1 h(s, x) dx.
+\end{aligned}
 \end{equation*}
-	Since $f_m(s)$ is an analytic function, the Cauchy-Riemann equations imply that
+	Since $h(s, x)$ is defined for $(s, x) \in \field{C} \times \bbr{0, 1}$ and $h(s, x)$ is holomorphic in $s$ for each $x$ and since $h(s, x)$ is continuous on $\field{C} \times \bbr{0, 1}$ theorem 5.4 from \cite{Stein2003} gives us that $f_m$ is holomorphic, hence analytic. Therefore we can apply the Cauchy-Riemann equations which imply that
 \begin{equation*}
-	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{2 \pi m c_m(t) \sin(2 \pi m \sigma)}
+	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{c_m(t) \sin(2 \pi m \sigma)}
 \end{equation*}
 	or equivalently
 \begin{equation*}
-	\frac{d}{dt} c_m(t) = -2 \pi m c_m(t),
+	\frac{d}{dt} c_m(t) = -2 \pi m c_m(t).
 \end{equation*}
-	which represents a linear homogenous differential equation with the general solution
+	This represents a linear homogenous differential equation with the general solution
 \begin{equation*}
 	c_m(t) = c_m e^{-2 \pi m t}.
 \end{equation*}
-	Finally we can write
+	Finally we get
 \begin{equation*}
 	f(s) = \sum _{m \in \field{Z}} c_m e^{i 2 \pi m s}.
 \end{equation*}
-	Let us now suppose $m > 0$ and $t \to -\infty$ or if $m < 0$ let $t \to \infty$. Then we have
+	Let us now suppose $m > 0$ and $t \to -\infty$. Then we have
 \begin{equation*}
-	f_m(\sigma + i t) = c_m e^{-i 2 \pi m \sigma} e^{2 \pi m \abs{t}} = \widetilde{c}_m e^{2 \pi m \abs{t}}.
+	f_m(\sigma + i t) = c_m e^{i 2 \pi m \sigma} e^{2 \pi m \abs{t}} = \widetilde{c}_m e^{2 \pi m \abs{t}}.
 \end{equation*}
-	On the other hand
+	On the other hand we know that
 \begin{equation*}
-	\abs{f_m(\sigma + i t)} = \abs{\int _0 ^1 f(\sigma + x + i t) e^{- i 2 \pi m x} dx} \leq \int _0 ^1 \abs{f(\sigma + x + i t)} dx.
+	\abs{f_m(s)} = \abs{\int _0 ^1 f(x + s) e^{- i 2 \pi m x} dx} \leq \int _0 ^1 \abs{f(x + s)} dx.
 \end{equation*}
 	According to the previous lemma  $\abs{\Gamma(\sigma + i t)}$ is bounded for $\abs{t}$ large enough and we get
 \begin{equation*}
 \begin{aligned}
 	\abs{\widetilde{c}_m} e^{2 \pi m \abs{t}}
-	&\leq \int_0^1 \abs{\sin(x + \sigma + i t)} \abs{\Gamma(x + \sigma + i t) \Gamma(x + 1 - \sigma - i t)} dx \\
+	&\leq \int_0^1 \abs{\sin(x + s)} \abs{\Gamma(x + s) \Gamma(x + 1 - s)} dx \\
 	&\leq \int_0^1 c e^{\pi \abs{t}} dx
 	\leq d e^{\pi \abs{t}},
 \end{aligned}
@@ -241,39 +241,39 @@ After deriving an integral representation of the product of the gamma and the Ri
 \end{equation}
 \end{theorem}
 \begin{proof}
-	First we assume that $s \in \field{R}_{> 1}$. Let $x = n t$ where $n \in \field{N}_{> 0}$. By substitution we get
+	First we assume that $s \in \field{R}_{> 1}$. Let $x = \cbr{n + 1} t$ where $n \in \field{N}_{\geq 0}$. By substitution we get
 \begin{equation*}
-	\Gamma(s) = \int _0 ^{\infty} x^{s - 1} e^{-x} (1 - e^{-x})^{-1} dx = n^s \int _0 ^\infty e^{-n t} t^{s - 1} dt,
+	\Gamma(s) = \int _0 ^{\infty} x^{s - 1} e^{-x} dx = \cbr{n + 1}^s \int _0 ^\infty e^{-\cbr{n + 1} t} t^{s - 1} dt,
 \end{equation*}
 equivalently
 \begin{equation*}
-	n^{-s} \Gamma(s) = \int _0 ^\infty e^{-n t} t^{s - 1} dt.
+	\cbr{n + 1}^{-s} \Gamma(s) = \int _0 ^\infty e^{-\cbr{n + 1} t} t^{s - 1} dt.
 \end{equation*}
-	After summing up both sides over $n$ ranging from $1$ to $\infty$ we obtain
+	After summing up both sides over $n$ ranging from $0$ to $\infty$ we obtain
 \begin{equation*}
-	\zeta(s) \Gamma(s) = \sum _{n=1} ^\infty n^{-s} \Gamma(s) = \sum _{n=0} ^\infty \int _0 ^\infty e^{-(n + 1) t} t^{s - 1} dt.
+	\zeta(s) \Gamma(s) = \sum _{n = 0} ^\infty \cbr{n + 1}^{-s} \Gamma(s) = \sum _{n = 0} ^\infty \int _0 ^\infty e^{-(n + 1) t} t^{s - 1} dt.
 \end{equation*}
 	Since the integral can be treated as a Lebesgue integral and since the integrand is nonnegative, Levi’s convergence theorem tells us that the series
 \begin{equation*}
-	\sum _{n=0} ^\infty e^{-(n + 1) t} t^{s - 1} dt
+	\sum _{n=0} ^\infty e^{-(n + 1) t} t^{s - 1}
 \end{equation*}
-	converges almost everywhere to a Lebesgue-integrable sum function on $\bcbr{O, \infty}$ and that we can interchange sum and integral such that
+	converges almost everywhere to a Lebesgue-integrable sum function on $\bcbr{0, \infty}$ and that we can interchange sum and integral such that
 \begin{equation*}
 	\zeta(s) \Gamma(s) = \int _0 ^\infty \sum _{n = 0} ^\infty e^{-(n + 1) t} t^{s - 1} dt.
 \end{equation*}
 	If $t > 0$ then $0 < e^{-t} < 1$. Thus
 \begin{equation*}
-	\sum _{n = 0} ^\infty e^{n t} = \frac{1}{1 - e^{-t}}
+	\sum _{n = 0} ^\infty e^{-n t} = \frac{1}{1 - e^{-t}}
 \end{equation*}
 	is a geometric series. Bringing it together we have
 \begin{equation*}
 	\sum _{n=0} ^\infty e^{-(n + 1) t} t^{s - 1} = \frac{e^{-t} t^{s - 1}}{1 - e^{-t}}
 \end{equation*}
-	everywhere on $\bcbr{0, \infty}$, except for $s = 0$, so we get
+	everywhere on $\bcbr{0, \infty}$, except for $t = 0$, so we get
 \begin{equation*}
 	\zeta(s) \Gamma(s) = \int _0 ^\infty \frac{e^{-t} t^{s - 1}}{1 - e^{-t}} dt
 \end{equation*}
-	for real $s > 1$. To extend it to all complex $s$ with $\sigma > 1$ we note that both members are analytic for $\sigma > 1$. To show that the right member is analytic we assume $1 + \delta \leq \sigma \leq c$, where $c > 1$ and $\delta > 0$ and write
+	for real $s > 1$. To extend it to all complex $s$ with $\sigma > 1$ we note that the left side is analytic for $\sigma > 1$. To show that the right side is analytic we assume $1 + \delta \leq \sigma \leq c$, where $c > 1$ and $\delta > 0$ and write
 \begin{equation*}
 	\int _0 ^\infty \abs{\frac{e^{-t} t^{s - 1}}{1 - e^{-t}}} dt \leq \int _0 ^\infty \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt = \cbr{\int _0 ^1 + \int _1 ^\infty} \frac{e^{-t} t^{\sigma - 1}}{1 - e^{-t}} dt.
 \end{equation*}
@@ -355,7 +355,7 @@ equivalently
 	&f_z(s) = \frac{z^{s - 1} e^z}{1 - e^z}
 \end{aligned}
 \end{equation*}
-	is an entire function of $s$ for $z \in \{ z \in \field{C} \colon \abs{\Im(z)} < 2 \pi \land z \neq 0 \}$ we only have to show that the integrals along $C_1$ and $C_3$ converge uniformly on every compact disk $D_R = \{ z \in \field{C} \colon \abs{z} \leq R \}$ for $R \in \field{R}_{> 0}$. Along $C_1$ for $r \geq 1$ we have
+	is an entire function of $s$ for $z \in \{ z \in \field{C} \colon \abs{\Im(z)} < 2 \pi \land z \neq 0 \}$ we only have to show that the integrals along $C_1$ and $C_3$ converge uniformly on every compact disk $D_R = \{ s \in \field{C} \colon \abs{s} \leq R \}$ for $R \in \field{R}_{> 0}$. Along $C_1$ for $r \geq 1$ we have
 \begin{equation*}
 	\abs{z^{s - 1}} = r^{\sigma - 1} \abs{e^{-\pi i (\sigma - 1 + i t)}} = r^{\sigma - 1} e^{\pi t} \leq r^{R - 1} e^{\pi R}
 \end{equation*}
@@ -365,7 +365,7 @@ equivalently
 \end{equation*}
 	Hence since $e^r - 1 > \frac{e^r}{2}$ for $r \geq \log(2)$ either on $C_1$ or $C_3$ we have
 \begin{equation*}
-	\abs{\frac{z^{s - 1} e^z}{1 - e^z} \frac{dz}{dr}} \leq \frac{r^{R - 1} e^{\pi R} e^{-r}}{1 - e^{-r}} = \frac{r^{R - 1} e^{\pi R}}{e^{r} - 1} \leq A(R) r^{R - 1} e^{-r}
+	\abs{\frac{z^{s - 1} e^z}{1 - e^z}} \leq \frac{r^{R - 1} e^{\pi R} e^{-r}}{1 - e^{-r}} = \frac{r^{R - 1} e^{\pi R}}{e^{r} - 1} \leq A(R) r^{R - 1} e^{-r}
 \end{equation*}
 	for $r \geq 1$ and a constant $A(R) \in \field{R}_{> 0}$ only depending on $R$. As
 \begin{equation*}
@@ -384,20 +384,20 @@ equivalently
 	&\begin{aligned}
 		= \int _\infty ^c r^{s - 1} e^{-\pi i s} g(-r) dr
 		&+ i \int _{-\pi} ^{\pi} c^{s - 1} e^{(s - 1) i \theta} c e^{i \theta} g(c e^\theta) d\theta \\ 
-		&+ \int _{c} ^\infty r^{s - 1} e^{-\pi i s} g(-r) dr
+		&+ \int _{c} ^\infty r^{s - 1} e^{\pi i s} g(-r) dr
 	\end{aligned} \\
-	&= 2 i \sin(\pi s) \int _c ^\infty r^{s - 1} g(-r) dr + i c^s \int _c ^\infty e^{i s \theta} g(c e^{i \theta}) d\theta.
+	&= 2 i \sin(\pi s) \int _c ^\infty r^{s - 1} g(-r) dr + i c^s \int _{-\pi} ^\pi e^{i s \theta} g(c e^{i \theta}) d\theta.
 \end{aligned}
 \end{equation*}
-	Once we have divided $2i$ on both sides we get
+	Once we have divided by $2i$ on both sides we get
 \begin{equation*}
 	\pi I_c(s) = \sin(\pi s)I_{1, c}(s) + I_{2, c}(s).
 \end{equation*}
-	Now we let $c \to 0$. For $I_{1, c}$ previous theorem gives us
+	Now we let $c \to 0$. For $I_{1, c}$ the previous theorem gives us
 \begin{equation*}
-	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^r}{1 - e^r} dr = \Gamma(s)\zeta(s).
+	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^{-r}}{1 - e^{-r}} dr = \Gamma(s)\zeta(s).
 \end{equation*}
-	For $I_{2, c}$ we have to keep in mind that $g(z)$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus $z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there for $z = c < 2 \pi$. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
+	For $I_{2, c}$ we have to keep in mind that $g(z)$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus $z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
 \begin{equation*}
 	\abs{I_{2, c}(s)} \leq \frac{c^\sigma}{2} \int _{-\pi} ^{\pi} e^{-t \sigma} \frac{B}{c} d\theta \leq B e^{\pi \abs{t}} c^{\sigma - 1}.
 \end{equation*}
@@ -413,7 +413,7 @@ equivalently
 
 
 \begin{definition}
-	As $\Gamma(1 - s)$ is analytic for $\sigma \geq 1, s \neq 1$ and $I(s)$ is entire we can meromorphically continue $\zeta(s)$ and define 
+	As $\Gamma(1 - s)$ is analytic for $\sigma \leq 1, s \neq 1$ and $I(s)$ is entire we can meromorphically continue $\zeta(s)$ and define 
 \begin{equation*}
 	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma \leq 1, s \neq 1.
 \end{equation*}
@@ -429,7 +429,7 @@ equivalently
 \begin{equation*}
 \begin{aligned}
 	I(1) 
-	&= \frac{1}{2 \pi i} \int _{C_2} \frac{z^{0} e^z}{1 - e^z} dz = \frac{1}{2 \pi i} Res\cbr{\frac{e^z}{1 - e^z}, 1} \\
+	&= \frac{1}{2 \pi i} \int _{C_2} \frac{z^{0} e^z}{1 - e^z} dz = Res\cbr{\frac{e^z}{1 - e^z}, 1} \\
 	&= \lim\limits _{z \to 0} z \frac{e^z}{1 - e^z} = \lim\limits _{z \to 0} \frac{z}{e^{-z} - 1} = -\lim\limits _{z \to 0} \frac{1}{e^{-z}} = -1.
 \end{aligned}
 \end{equation*}
@@ -458,7 +458,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \begin{equation*}
 	g \colon U \to \field{C}, \; g(z) = \frac{e^z}{1 - e^z}
 \end{equation*}
-	then $g(z)$ is bounded such that
+	then $g(z)$ is bounded in $S(r)$ such that
 \begin{equation*}
 	\exists A(r) \in \field{R}^+ \; \forall z \in S(r) \colon \abs{g(z)} \leq A(r).
 \end{equation*}
@@ -468,18 +468,18 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \begin{equation*}
 	Q(r) = \fbr{z \in \field{C} \colon \abs{x} \leq 1, \abs{y} \leq \pi, \abs{z} \geq r} \subset S(r)
 \end{equation*}
-	As $g$ is continuous and $Q(r)$ is compact in $U$ we know that $g \big\vert _{Q(r)}$ has to be bounded by a $B(r) \in \field{R}^+$. The same holds for $g$ in the infinite strip $S(r) \cap \fbr{z \in \field{C} \colon \abs{x} \leq 1}$ because of its $2 \pi i$-periodicity. \\
-	Now suppose $\abs{x} > 1$. We have
+	As $g$ is continuous and $Q(r)$ is compact in $U$ we know that $g \big\vert _{Q(r)}$ has to be bounded by a $B(r) \in \field{R}^+$. The same holds for $g$ in the punctured infinite strip $S(r) \cap \fbr{z \in \field{C} \colon \abs{x} \leq 1}$ because of its $2 \pi i$-periodicity. \\
+	Now suppose $\abs{x} \geq 1$. We have
 \begin{equation*}
 	\abs{g(z)} = \abs{\frac{e^z}{1 - e^z}} = \frac{e^x}{\abs{1 - e^z}} \leq \frac{e^x}{\abs{1 - e^x}}.
 \end{equation*}
-	For $x > 1$ we get
+	For $x \geq 1$ we get
 \begin{equation*}
-	\abs{g(z)} = \frac{e^x}{e^x - 1} = \frac{1}{1 - e^{-x}} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
+	\abs{g(z)} \leq \frac{e^x}{e^x - 1} = \frac{1}{1 - e^{-x}} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
 \end{equation*}
-	and analogously for $x < -1$ 
+	and analogously for $x \leq -1$ 
 \begin{equation*}
-	\abs{g(z)} = \frac{e^x}{1 - e^x} \leq \frac{1}{1 - e^{-x}} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
+	\abs{g(z)} \leq \frac{e^x}{1 - e^x} \leq \frac{1}{1 - e^x} \leq \frac{1}{1 - e^{-1}} = \frac{e}{e - 1}
 \end{equation*}
 	and therefore
 \begin{equation*}
@@ -562,9 +562,9 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 		&= \frac{1}{2 \pi i} \cbr{\int_{C_{1}} + \int_{C_{2}} + \int_{C_{3}} + \lim\limits_{N \to \infty}\int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz
 \end{aligned}
 \end{equation*}
-	it suffices to show that the last integral vanishes. We know that
+	where $C_1$, $C_2$ and $C_3$ are as defined in Figure~\ref{fig:ContourC}, it suffices to show that $\lim\limits_{N \to \infty} \int _{C_{4,N}} \dots = 0$. For $z \in \abs{C_{4,N}}$ we know that
 \begin{equation*}
-	\abs{z^{s - 1}} = \abs{z^{\sigma - 1}} = \abs{R(N)^{\sigma - 1} e^{-t \sigma}} \leq R(N)^{\sigma -1} e^{\pi \abs{t}}
+	\abs{z^{s - 1}} = \abs{z^{\sigma - 1}} = R(N)^{\sigma - 1} e^{-t \sigma} \leq R(N)^{\sigma -1} e^{\pi \abs{t}}
 \end{equation*}
 	and from the previous lemma we deduce
 \begin{equation*}
