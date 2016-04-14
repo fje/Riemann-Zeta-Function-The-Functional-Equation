@@ -61,7 +61,7 @@ First of all we want to draw some conclusions about the convergence of the Riema
 \end{equation}
 \end{lemma}
 \begin{proof}
-	Let $\triangle \subset S$ denote a closed solid triangle. As $\triangle$ is compact and due to the uniform convergence of $f_n\big\vert _\triangle \to f\big\vert _\triangle$ and Goursat’s lemma we know that
+	Let $\triangle \subset S$ denote a closed solid triangle. As $\triangle$ is compact and due to the uniform convergence of $f_n\big\vert _\triangle \to f\big\vert _\triangle$ and Goursat’s integral lemma we know that
 \begin{equation*}
 	\forall \triangle \subset S \colon \int_{\partial \triangle} f(z) dz = \int_{\partial \triangle} \lim\limits_{n \to \infty} f_n(z) dz	= \lim\limits_{n \to \infty}\int_{\partial \triangle} f_n(z) dz = 0.
 \end{equation*}
@@ -258,7 +258,7 @@ In this section we introduce infinite products and talk about their convergence.
 \begin{equation*}
 	Q(x) = \sum_{n \in A} f(n),
 \end{equation*}
-	where $A$ consists of those $n$ having all their prime factors $\leq x$, hence
+	where $A$ consists of those $n$ having all their prime factors $\leq x$ and $1 \in A$, hence
 \begin{equation*}
 	\sum_{n \in \field{N}} f(n)	 - Q(x) = \sum_{n \in B} f(n),
 \end{equation*}
