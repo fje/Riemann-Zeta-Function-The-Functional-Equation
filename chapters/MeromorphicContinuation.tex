@@ -21,7 +21,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 
 
 \begin{theorem}
-	$\Gamma(s)$ converges absolutely for $\sigma > 0$
+	$\Gamma$ converges absolutely for $\sigma > 0$.
 \end{theorem}
 \begin{proof}
 	We can write
@@ -52,14 +52,14 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 
 
 \begin{theorem}
-	$\Gamma(s)$ is holomorphic for $\sigma > 0$.
+	$\Gamma$ is holomorphic for $\sigma > 0$.
 \end{theorem}
 \begin{proof}
 	Let $\partial \triangle \subset \{ s \in \field{C} \colon \; \sigma > 0 \}$ denote the boundary of a solid triangle. Since $\Gamma$ converges absolutely for $\sigma > 0$ we can use Fubini's theorem for integrable functions in order to interchange the double integral and we get
 \begin{equation*}
 	\int _{\partial \triangle} \Gamma(s) ds = \int _{\partial \triangle} \int _0 ^\infty x^{s - 1} e^{-x} dx ds = \int _0 ^\infty \int _{\partial \triangle} x^{s - 1} e^{-x} ds dx = 0.
 \end{equation*}
-	As the integrand of $\Gamma$ is a holomorphic function of $s$, Goursat's integral lemma implies that the whole expression has to be $0$. Therefore Morera's theorem finally gives us that $\Gamma(s)$ is holomorphic for $\sigma > 0$.
+	As the integrand of $\Gamma$ is a holomorphic function of $s$, Goursat's integral lemma implies that the whole expression has to be $0$. Therefore Morera's theorem finally gives us that $\Gamma$ is holomorphic for $\sigma > 0$.
 \end{proof}
 
 
@@ -81,7 +81,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 
 
 \begin{theorem}
-	$\Gamma(s)$ is meromorphically continuable for all $s \in \field{C}$ with simple poles at $s = -n\in \field{Z} _{\leq 0}$ and we have
+	$\Gamma$ is meromorphically continuable for all $s \in \field{C}$ with simple poles at $s = -n\in \field{Z} _{\leq 0}$ and we have
 \begin{equation*}
 	Res\cbr{\Gamma(s), -n} = \frac{\cbr{-1}^n}{n!}.
 \end{equation*}
@@ -91,8 +91,8 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{equation*}
 	\Gamma(s) = \frac{1}{s} \Gamma(s + 1) = \dots = \frac{1}{s \cbr{s + 1} \dots \cbr{s + n - 1}} \Gamma(s + n) = \frac{\Gamma(s + n)}{P_n(s)}.
 \end{equation*}
-	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma(s)$ is well defined and its poles are just the simple roots of $P_n(s)$ for $n \in \field{N}$, namely $\field{Z}_{\leq 0}$. \\
-	Now we want to calculate the residues of $\Gamma(s)$ and find
+	Thus $\Gamma$'s holomorphy in the negative plane is reducible to the holomorphy of the function in the positive plane which we've already shown. Hence $\Gamma$ is well defined and its poles are just the simple roots of $P_n(s)$ for $n \in \field{N}$, namely $\field{Z}_{\leq 0}$. \\
+	Now we want to calculate the residues of $\Gamma$ and find
 \begin{equation*}
 	Res\cbr{\Gamma(s), -n} = \lim\limits_{s \to -n} \cbr{s + n} \frac{\Gamma(s + n + 1)}{s \cbr{s + 1} \dots \cbr{s + n}} = \frac{\cbr{-1}^n}{n!}.
 \end{equation*}
@@ -121,7 +121,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{equation*}
 	\forall \sigma \in \field{R} \colon \lim\limits_{\abs{t} \to \infty} \Gamma(\sigma + i t) = 0,
 \end{equation*}
-	so $\Gamma(\sigma + i t)$ is bounded for a fixed $\sigma \in \field{R}$ and $\abs{t}$ large enough.
+	so $\Gamma$ is bounded for a fixed $\sigma \in \field{R}$ and $\abs{t}$ large enough.
 \end{lemma}
 \begin{proof}
 	Let $\sigma >0$ be fixed. For the substitution $y = \frac{1}{2 \pi} \log(x)$ we get
@@ -152,18 +152,18 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 \begin{equation*}
 	\Gamma(s)\Gamma(1 - s) = \frac{\pi}{\sin(\pi s)} \hsp \textit{  for } s \in \field{C} \mysetminus \field{Z}.
 \end{equation*}
-	Hence $\Gamma(s)$ has no zeros and its reciprocal function $\frac{1}{\Gamma(s)}$ is well defined with zeros at the simple poles of $\Gamma(s)$.
+	Hence $\Gamma$ has no zeros and its reciprocal function $\frac{1}{\Gamma}$ is well defined with zeros at the simple poles of $\Gamma$.
 \end{theorem}
 \begin{proof}
 	Let us consider
 \begin{equation*}
 	f(s) = \sin(\pi s) \Gamma(s) \Gamma(1 - s).
 \end{equation*}
-	We want to show that $f(s)$ is constant. It is easy to check that $f(s)$ is entire as
+	We want to show that $f$ is constant. It is easy to check that $f$ is entire as
 \begin{equation*}
 	\lim\limits_{s \to 0} \frac{\sin(s)}{s} = 1,
 \end{equation*}
-	hence $\sin(s)$ eradicates the simple poles of $\Gamma(s)$. Furthermore $f(s)$ satisfies
+	hence the factor $\sin(\pi s)$ eradicates the simple poles of $\Gamma$. Furthermore $f$ satisfies
 \begin{equation*}
 \begin{aligned}
 	f(s + 1) 
@@ -171,7 +171,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	&= -\sin(\pi s) s \Gamma(s) \cbr{-\frac{1}{s}} \Gamma(1 - s) = f(s).
 \end{aligned}
 \end{equation*}
-	So for fixed $t$ $f(\sigma + it)$ is $1$-periodic and $f \in C^\infty(\field{R} / \field{Z})$. Therefore $f(s)$ has a rapidly decreasing converging Fourier series
+	So for fixed $t$, $f$ is $1$-periodic and $f \in C^\infty(\field{R} / \field{Z})$. Therefore $f$ has a rapidly decreasing converging Fourier series
 \begin{equation*}
 	f(s) = \sum _{n \in \field{Z}} c_n(t) e^{i 2 \pi n \sigma}.
 \end{equation*}
@@ -185,7 +185,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	&= \int _0 ^1 h(s, x) dx.
 \end{aligned}
 \end{equation*}
-	Since $h(s, x)$ is defined for $(s, x) \in \field{C} \times \bbr{0, 1}$ and $h(s, x)$ is holomorphic in $s$ for each $x$ and since $h(s, x)$ is continuous on $\field{C} \times \bbr{0, 1}$ theorem 5.4 from \cite{Stein2003} gives us that $f_m$ is holomorphic, hence analytic. Therefore we can apply the Cauchy-Riemann equations which imply that
+	Since $h$ is defined for $(s, x) \in \field{C} \times \bbr{0, 1}$ and $h$ is holomorphic in $s$ for each $x$ and since $h$ is continuous on $\field{C} \times \bbr{0, 1}$ theorem 5.4 from chapter 2 of \cite{Stein2003} gives us that $f_m$ is holomorphic, hence analytic. Therefore we can apply the Cauchy-Riemann equations with the consequence that
 \begin{equation*}
 	\frac{d}{dt}\cbr{c_m(t) \cos(2 \pi m \sigma)} = - \frac{d}{d\sigma}\cbr{c_m(t) \sin(2 \pi m \sigma)}
 \end{equation*}
@@ -218,7 +218,7 @@ The gamma function is closely related to the Riemann zeta function and plays an 
 	\leq d e^{\pi \abs{t}},
 \end{aligned}
 \end{equation*}
-	where $c,d \in \field{R}_{> 0}$. Thus by comparing the growth rates we conclude that $\widetilde{c}_m = 0$ for $m \neq 0$ leaving $f(s)$ constant. The value is easily determined by
+	where $c,d \in \field{R}_{> 0}$. Thus by comparing the growth rates we conclude that $\widetilde{c}_m = 0$ for $m \neq 0$ leaving $f$ constant. The value is easily determined by
 \begin{equation*}
 \begin{aligned}
 	\lim\limits_{s \to 0} f(s)
@@ -296,9 +296,9 @@ equivalently
 \centering
 \begin{equation*}
 \begin{aligned}
-	C_1 \colon \bcbr{c, \infty} &\to \field{C}, \; C_1(r) = r e^{i \pi} \\
+	C_1 \colon \bcbr{c, \infty} &\to \field{C}, \; C_1(r) = r e^{-i \pi} \\
 	C_2 \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_2(\theta) = c e^{i \theta} \\
-	C_3 \colon \bcbr{c, \infty} &\to \field{C}, \; C_3(r) = r e^{-i \pi} \\
+	C_3 \colon \bcbr{c, \infty} &\to \field{C}, \; C_3(r) = r e^{i \pi} \\
 \end{aligned}
 \end{equation*}
 \end{minipage}
@@ -397,7 +397,7 @@ equivalently
 \begin{equation*}
 	\lim\limits _{c \to 0} I_{1, c}(s) = \int _0 ^\infty \frac{r^{s - 1} e^{-r}}{1 - e^{-r}} dr = \Gamma(s)\zeta(s).
 \end{equation*}
-	For $I_{2, c}$ we have to keep in mind that $g(z)$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus $z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
+	For $I_{2, c}$ we have to keep in mind that $g$ is holomorphic for $\abs{z} < 2 \pi$ except a simple pole at $z = 0$. Thus the function $z \mapsto z g(z)$ is holomorphic anywhere inside $\abs{z} = c < 2 \pi$ and is bounded there. So we get $\abs{g(z)} < \frac{B}{\abs{z}}$ for some constant $B \in \field{R}_{> 0}$ and obtain the approximation
 \begin{equation*}
 	\abs{I_{2, c}(s)} \leq \frac{c^\sigma}{2} \int _{-\pi} ^{\pi} e^{-t \sigma} \frac{B}{c} d\theta \leq B e^{\pi \abs{t}} c^{\sigma - 1}.
 \end{equation*}
@@ -413,7 +413,7 @@ equivalently
 
 
 \begin{definition}
-	As $\Gamma(1 - s)$ is analytic for $\sigma \leq 1, s \neq 1$ and $I(s)$ is entire we can meromorphically continue $\zeta(s)$ and define 
+	As the function $s \mapsto \Gamma(1 - s)$ is analytic for $\sigma \leq 1, s \neq 1$ and $I$ is entire we can meromorphically continue $\zeta$ and define 
 \begin{equation*}
 	\zeta(s) = \Gamma(1 - s) I(s) \textit{ for } \sigma \leq 1, s \neq 1.
 \end{equation*}
@@ -424,7 +424,7 @@ equivalently
 	We have $\zeta \in \mathcal{H}(\field{C} \mysetminus \fbr{1})$ with a simple pole in $s = 1$ and its residue $Res\cbr{\zeta(s), 1} = 1$.
 \end{theorem}
 \begin{proof}
-	The only singularities that come into question are the poles of $\Gamma(1 - s)$ as $I(s)$ is entire, but we already know that $\zeta(s)$ is analytic for $\sigma > 1$ which leaves $s = 1$ the single possible pole. \\
+	The only singularities that come into question are the poles of $\Gamma$ as $I$ is entire, but we already know that $\zeta$ is analytic for $\sigma > 1$ which leaves $s = 1$ the single possible pole. \\
 	To prove the above statement, assume $s = 1$. The integrals along $C_1$ and $C_3$ take the same values and cancel each other out leaving
 \begin{equation*}
 \begin{aligned}
@@ -456,9 +456,12 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \end{equation*}
 	and
 \begin{equation*}
-	g \colon U \to \field{C}, \; g(z) = \frac{e^z}{1 - e^z}
+\begin{aligned}
+	&g \colon U \to \field{C}, \\
+	&g(z) = \frac{e^z}{1 - e^z}
+\end{aligned}
 \end{equation*}
-	then $g(z)$ is bounded in $S(r)$ such that
+	then $g$ is bounded in $S(r)$ such that
 \begin{equation*}
 	\exists A(r) \in \field{R}^+ \; \forall z \in S(r) \colon \abs{g(z)} \leq A(r).
 \end{equation*}
@@ -506,9 +509,9 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \centering
 \begin{equation*}
 \begin{aligned}
-	C_{1,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{1,N}(r) = r e^{i \pi} \\
+	C_{1,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{1,N}(r) = r e^{-i \pi} \\
 	C_{2,N} \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_{2,N}(\theta) = c e^{i \theta} \\
-	C_{3,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{3,N}(r) = r e^{-i \pi} \\
+	C_{3,N} \colon \bbr{c, R(N)} &\to \field{C}, \; C_{3,N}(r) = r e^{i \pi} \\
 	C_{4,N} \colon \cbr{-\pi, \pi} &\to \field{C}, \; C_{4,N}(\theta) = R(N) e^{i \theta}
 \end{aligned}
 \end{equation*}
@@ -559,7 +562,7 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 \begin{aligned}
 	\lim\limits_{N \to \infty} I_N(s)
 		&= \lim\limits_{N \to \infty} \frac{1}{2 \pi i} \cbr{\int_{C_{1,N}} + \int_{C_{2,N}} + \int_{C_{3,N}} + \int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz \\
-		&= \frac{1}{2 \pi i} \cbr{\int_{C_{1}} + \int_{C_{2}} + \int_{C_{3}} + \lim\limits_{N \to \infty}\int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz
+		&= \frac{1}{2 \pi i} \cbr{\int_{C_{1}} + \int_{C_{2}} + \int_{C_{3}} + \lim\limits_{N \to \infty}\int_{C_{4,N}}} \frac{z^{s - 1} e^z}{1 - e^z} dz,
 \end{aligned}
 \end{equation*}
 	where $C_1$, $C_2$ and $C_3$ are as defined in Figure~\ref{fig:ContourC}, it suffices to show that $\lim\limits_{N \to \infty} \int _{C_{4,N}} \dots = 0$. For $z \in \abs{C_{4,N}}$ we know that
@@ -623,20 +626,20 @@ The functional equation gives a new powerful closed expression of $\zeta$ and al
 
 
 \begin{corollary}
-	$\zeta(s)$ has zeros at $s = -2n$ for $n \in \field{N}_0$. These are called the trivial zeros.
+	$\zeta$ has zeros at $s = -2n$ for $n \in \field{N}_0$. These are called the trivial zeros.
 \end{corollary}
 \begin{proof}
-	The functional equation of $\zeta(s)$ becomes zero whenever $\sin(\frac{\pi s}{2})$ vanishes, which in fact happens when $s = -2n$.
+	The functional equation of $\zeta$ becomes zero whenever $\sin(\frac{\pi s}{2})$ vanishes, which in fact happens when $s = -2n$.
 \end{proof}
 
 
 \begin{corollary}
-	$\zeta(s)$ can only have nontrivial zeros within the strip $0 \leq \sigma \leq 1$. This region is also known as the critical strip.
+	$\zeta$ can only have nontrivial zeros within the strip $0 \leq \sigma \leq 1$. This region is also known as the critical strip.
 \end{corollary}
 \begin{proof}
 	Consider the second functional equation from above
 \begin{equation*}
 	\zeta(s) = 2\cbr{2 \pi}^{s-1} \Gamma(1 - s) \sin(\frac{\pi s}{2}) \zeta(1 - s) \textit{ for } \sigma < 0. 
 \end{equation*}
-	We already know that $\zeta(s)$ has no zeros for $\sigma > 1$. We also have shown that $\Gamma(s)$ doesn't vanish on its domain and the only remaining factor is $\sin(\frac{\pi s}{2})$, which in fact generates the trivial zeros. Thus $\zeta(s)$ has no nontrivial zeros for $\sigma < 0$.
+	We already know that $\zeta$ has no zeros for $\sigma > 1$. We also have shown that $\Gamma$ doesn't vanish on its domain and the only remaining factor is $\sin(\frac{\pi s}{2})$, which in fact generates the trivial zeros. Thus $\zeta$ has no nontrivial zeros for $\sigma < 0$.
 \end{proof}
